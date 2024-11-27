@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Principal {
+    
     public static void main(String[] args) {
        Scanner scanner = new Scanner(System.in);
        Personagem p1 = new Personagem();
-        
        Monstros m1 = new Monstros();
 
     }   
@@ -30,11 +30,15 @@ public class Principal {
                 guarde = p1.manaMaxima+4+p1.sabedoria*2;
                 break;
             case "Clérigo":
-
+                guarde = p1.manaMaxima+8+p1.sabedoria*3;
+                break;
+            case "Druida":
+                guarde = p1.manaMaxima+8+p1.sabedoria*2;
+                break;
+            case "Barbáro":
+                guarde = p1.manaMaxima+8*+p1.sabedoria;
+                break;
             default:
                 break;
         }
     }
-        
-
-}
