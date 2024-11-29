@@ -343,8 +343,54 @@ public class Principal {
             return dado;
         }
         public static boolean batalha(){
-            boolean vitoria = false;
+            boolean vitoria = false, acertoM = false, acertoP = false;
+            int guarde = 0;
+            while (monstro[ameaca].torso > 0){
+                if (p1.vida > 0){
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("| Uma pergunta nasce, será que tudo valeu apena? Infelizmente não |");
+                    System.out.println("  | há tempo para elas ser repondida... Agora é sua vez,"+p1.nome+"!|");
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("  "+p1.nome);
+                    System.out.println("    HP: "+p1.vida+"/"+p1.vidaMaxima+"  MP: "+p1.mana+"/"+p1.manaMaxima);
+                    System.out.println("");
+                    System.out.println(" _________    ______________    _______    ________ ");
+                    System.out.println("|1- ATACAR|  |2- HABILIDADES|  |3- ITEM|  |4- FUGIR|");
+                    System.out.println(" ‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾ ");
+                    resposta = scanner.nextInt();
+                    clear();
+                    switch (resposta) {
+                        case 1:
+                        System.out.println("-------------------------------------------------------------------");
+                        System.out.println("|  "+monstro[ameaca].nome+"                                         |");
+                        System.out.println("|                                                                 |");
+                        System.out.println("-------------------------------------------------------------------");
+                        System.out.println("  "+p1.nome);
+                        System.out.println("    HP: "+p1.vida+"/"+p1.vidaMaxima+"  MP: "+p1.mana+"/"+p1.manaMaxima);
+                        System.out.println("");       
+                            break;
+                        case 2:
 
+                            break;
+                        case 3:
+                        
+                            break;
+                        case 4:
+                            
+                            break;
+                        default:
+                            System.out.println("Você tenta agir, mas falha miseravelmente.");
+                            break;
+                    }
+                    acertoM = testeAtaqueM();
+                    if (acertoM == true){
+                    guarde = danoM();
+                    p1.vida = p1.vida - guarde;
+                    }
+                }else{
+
+                }
+            }
             return vitoria;
         }
 
