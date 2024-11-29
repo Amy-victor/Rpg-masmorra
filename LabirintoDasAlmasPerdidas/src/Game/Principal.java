@@ -7,11 +7,11 @@ public class Principal {
     static Random rolagem = new Random();
     static boolean teste;
     static Personagem p1 = new Personagem();
-    static Monstros m1 = new Monstros();
-    static int resposta, diff;
+    static Monstros[] monstro = new Monstros[5];
+    static int resposta, diff, ameaca;
                 public static void main(String[] args) {
-                    teste = moeda();
                     System.out.println("Você ganhou?"+teste);
+                    monstro[0] = new Monstros();
                 } 
                 //procedimento para limpar a tela
                 public static void clear(){
@@ -59,7 +59,7 @@ public class Principal {
                 return acerto;
                 }
                 public static boolean testeForca(){
-                    int d6 = rolagem.nextInt(6)+1+p1.forca;
+                    int d6 = rolagem.nextInt(6)+1+p1.forca-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -87,7 +87,7 @@ public class Principal {
                     return acerto;
                 }
                 public static boolean testeDestreza(){
-                    int d6 = rolagem.nextInt(6)+1+p1.destreza;
+                    int d6 = rolagem.nextInt(6)+1+p1.destreza-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -115,7 +115,7 @@ public class Principal {
                     return acerto;
                 }
                 public static boolean testeConstituicao(){
-                    int d6 = rolagem.nextInt(6)+1+p1.constituicao;
+                    int d6 = rolagem.nextInt(6)+1+p1.constituicao-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -143,7 +143,7 @@ public class Principal {
                     return acerto;
                 }
                 public static boolean testeSabedoria(){
-                    int d6 = rolagem.nextInt(6)+1+p1.sabedoria;
+                    int d6 = rolagem.nextInt(6)+1+p1.sabedoria-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -171,7 +171,7 @@ public class Principal {
                     return acerto;
                 }
                 public static boolean testeInteligencia(){
-                    int d6 = rolagem.nextInt(6)+1+p1.inteligencia;
+                    int d6 = rolagem.nextInt(6)+1+p1.inteligencia-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -199,7 +199,7 @@ public class Principal {
                     return acerto;
                 }
                 public static boolean testeCarisma(){
-                    int d6 = rolagem.nextInt(6)+1+p1.carisma;
+                    int d6 = rolagem.nextInt(6)+1+p1.carisma-p1.debuff;
                     boolean acerto = false;
                     switch (diff) {
                         //Dificuldade Simples
@@ -226,6 +226,127 @@ public class Principal {
                     System.out.println(d6);
                     return acerto;
                 }
+        public static boolean testeAtaqueP(){
+            int d6 = rolagem.nextInt(6)+1+p1.buff-p1.debuff;
+            boolean acerto = false,fineza = false;
+            for (int i = 0; i>2; i++){
+                if (p1.habilidade[i] == "Fineza"){
+                    fineza = true;
+                }
+            }
+            if (fineza == true){
+                d6 = d6+p1.destreza;
+            }else{
+                d6 = d6+p1.forca;
+            }
+            System.out.println(d6);
+            if (d6>= monstro[ameaca].defesa){
+                acerto = true;
+            }
+            return acerto;
+        }
+        public static int danoP(){
+            int dado = 0;
+            boolean fineza = false;
+            for (int i = 0; i>2; i++){
+                if (p1.habilidade[i] == "Fineza"){
+                    fineza = true;
+                }
+            }
+            if (fineza == true){
+                switch (p1.dadoDano) {
+                    case "d":
+                        dado = p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    case "1d4":
+                        dado = rolagem.nextInt(4)+1+p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    case "1d6":
+                        dado = rolagem.nextInt(6)+1+p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    case "1d8":
+                        dado = rolagem.nextInt(8)+1+p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    case "1d10":
+                        dado = rolagem.nextInt(10)+1+p1.destreza+p1.buff-p1.debuff;  
+                        break;
+                    case "1d12":
+                        dado = rolagem.nextInt(12)+1+p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    case "1d20":
+                        dado = rolagem.nextInt(20)+1+p1.destreza+p1.buff-p1.debuff;
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+                switch (p1.dadoDano) {
+                    case "d":
+                        dado = p1.forca+p1.buff-p1.debuff;
+                        break;
+                    case "1d4":
+                        dado = rolagem.nextInt(4)+1+p1.forca+p1.buff-p1.debuff;
+                        break;
+                    case "1d6":
+                        dado = rolagem.nextInt(6)+1+p1.forca+p1.buff-p1.debuff;
+                        break;
+                    case "1d8":
+                        dado = rolagem.nextInt(8)+1+p1.forca+p1.buff-p1.debuff;
+                        break;
+                    case "1d10":
+                        dado = rolagem.nextInt(10)+1+p1.forca+p1.buff-p1.debuff;  
+                        break;
+                    case "1d12":
+                        dado = rolagem.nextInt(12)+1+p1.forca+p1.buff-p1.debuff;
+                        break;
+                    case "1d20":
+                        dado = rolagem.nextInt(20)+1+p1.forca+p1.buff-p1.debuff;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return dado;
+        }
+        public static boolean testeAtaqueM(){
+            int d6 = rolagem.nextInt(6)+1+monstro[ameaca].modAcerto+monstro[ameaca].buff-monstro[ameaca].debuff;
+            boolean acerto = false;
+            if (d6 >= p1.defesa){
+                acerto = true;
+            }
+            return acerto;
+        }
+        public static int danoM(){
+            int dado = 0;
+            switch (p1.dadoDano) {
+                case "1d4":
+                    dado = rolagem.nextInt(4)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff;
+                    break;
+                case "1d6":
+                    dado = rolagem.nextInt(6)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff;
+                    break;
+                case "1d8":
+                    dado = rolagem.nextInt(8)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff;
+                    break;
+                case "1d10":
+                    dado = rolagem.nextInt(10)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff; 
+                    break;
+                case "1d12":
+                    dado = rolagem.nextInt(12)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff;
+                    break;
+                case "1d20":
+                    dado = rolagem.nextInt(20)+1+monstro[ameaca].modDano+monstro[ameaca].buff-monstro[ameaca].debuff;
+                    break;
+                default:
+                    break;
+            }
+            return dado;
+        }
+        public static boolean batalha(){
+            boolean vitoria = false;
+
+            return vitoria;
+        }
 
     //procedimentos para status
     public static int mana(){
