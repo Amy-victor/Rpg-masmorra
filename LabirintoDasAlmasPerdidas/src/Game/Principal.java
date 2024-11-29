@@ -347,9 +347,150 @@ public class Principal {
             int guarde = 0;
             while (monstro[ameaca].torso > 0){
                 if (p1.vida > 0){
+                    if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo <=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                                              "); 
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|       ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                -  /----                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                                              "); 
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo <= 0 && monstro[ameaca].bracoDireito <= 0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |   ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                -  /----                           ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo <= 0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito <= 0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|    ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                - /----                           ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo <=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito<=0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                -  /----                          ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo<=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                      ___,./ \\.,___ ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito<=0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                 - /----                             ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                            |  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                 -  /----                            ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                                              ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo <=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                            ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                                              "); 
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                           ");
+                        System.out.println("                           /|       ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                -  /----                              ");
+                    }else if (monstro[ameaca].cabeca>0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                            O                                  ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                                             ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                                             ");
+                        System.out.println("                           /|\\-|----  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                                              "); 
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo <= 0 && monstro[ameaca].bracoDireito <= 0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                           ");
+                        System.out.println("                            |   ");
+                        System.out.println("                           / \\     ");
+                        System.out.println("                                -  /----                           ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo <= 0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                           ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito <= 0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                            ");
+                        System.out.println("                           /|    ");
+                        System.out.println("                      ___,./ \\     ");
+                        System.out.println("                                - /----                           ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo <=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita <= 0){
+                        System.out.println("                                            ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito<=0 && monstro[ameaca].pernaEsquerda>0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                                             ");
+                        System.out.println("                           /|  ");
+                        System.out.println("                           / \\.,___     ");
+                        System.out.println("                                -  /----                          ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo<=0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                                            ");
+                        System.out.println("                            |\\-|----  ");
+                        System.out.println("                      ___,./ \\.,___ ");
+                        System.out.println("                                                              ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito<=0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita<=0){
+                        System.out.println("                                                             ");
+                        System.out.println("                           /|  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                 - /----                             ");
+                    }else if (monstro[ameaca].cabeca<=0 && monstro[ameaca].bracoEsquerdo>0 && monstro[ameaca].bracoDireito>0 && monstro[ameaca].pernaEsquerda <= 0 && monstro[ameaca].pernaDireita>0){
+                        System.out.println("                                                              ");
+                        System.out.println("                            |  ");
+                        System.out.println("                      ___,./ \\.,___     ");
+                        System.out.println("                                 -  /----                            ");
+                    }
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("| Uma pergunta nasce, será que tudo valeu apena? Infelizmente não |");
-                    System.out.println("  | há tempo para elas ser repondida... Agora é sua vez,"+p1.nome+"!|");
+                    System.out.println("| há tempo para elas ser repondida... Agora é sua vez,"+p1.nome+"!|");
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("  "+p1.nome);
                     System.out.println("    HP: "+p1.vida+"/"+p1.vidaMaxima+"  MP: "+p1.mana+"/"+p1.manaMaxima);
@@ -362,7 +503,7 @@ public class Principal {
                     switch (resposta) {
                         case 1:
                         System.out.println("-------------------------------------------------------------------");
-                        System.out.println("|  "+monstro[ameaca].nome+"                                         |");
+                        System.out.println("|                    "+monstro[ameaca].nome+"                     |");
                         System.out.println("|                                                                 |");
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("  "+p1.nome);
