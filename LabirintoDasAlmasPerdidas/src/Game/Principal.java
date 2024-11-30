@@ -549,8 +549,8 @@ public class Principal {
                         resposta = scanner.nextInt();
                         switch (resposta) {
                             case 1:
-                            teste = testeAtaqueP();
-                            if (teste = true){
+                            acertoP = testeAtaqueP();
+                            if (acertoP == true){
                                guarde = danoP();
                                monstro[ameaca].torso = monstro[ameaca].torso-guarde;
                             }else{
@@ -578,8 +578,8 @@ public class Principal {
                                 break;
                             case 2:
                             if (monstro[ameaca].cabeca>0){
-                                teste = acertarCabeca();
-                                if (teste = true){
+                                acertoP = acertarCabeca();
+                                if (acertoP == true){
                                guarde = danoP();
                                monstro[ameaca].cabeca = monstro[ameaca].cabeca-guarde;
                                 }else{
