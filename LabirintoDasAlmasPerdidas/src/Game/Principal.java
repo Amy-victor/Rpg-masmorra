@@ -245,6 +245,27 @@ public class Principal {
             }
             return acerto;
         }
+        public static boolean acertarCabeca(){
+            boolean acerto = false, fineza = false;
+            int d6 = rolagem.nextInt(6)+1+p1.buff-p1.debuff; 
+            for (int i = 0; i>2; i++){
+                if (p1.habilidade[i] == "Fineza"){
+                    fineza = true;
+                }
+            }
+            if (fineza == true){
+                d6 = d6+p1.destreza;
+            }else{
+                d6 = d6+p1.forca;
+            }
+            if (monstro[ameaca].pernaDireita <=0 && monstro[ameaca].pernaEsquerda <=0){
+                monstro[ameaca].defCabeca = monstro[ameaca].defesa;
+            }
+            if (d6>=monstro[ameaca].defCabeca){
+                acerto = true;
+            }
+            return acerto;
+        } 
         public static int danoP(){
             int dado = 0;
             boolean fineza = false;
@@ -502,13 +523,107 @@ public class Principal {
                     clear();
                     switch (resposta) {
                         case 1:
+                        
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("|                    "+monstro[ameaca].nome+"                     |");
-                        System.out.println("|                                                                 |");
+                        System.out.println("| [1- Torso]                                                      |");
+                        if (monstro[ameaca].cabeca>0){
+                        System.out.println("| [2- Cabeça]                                                     |");
+                        }
+                        if (monstro[ameaca].bracoEsquerdo>0){
+                            System.out.println("| [3- Braço Esquerdo]                                         |");
+                        }
+                        if (monstro[ameaca].bracoDireito>0){
+                            System.out.println("| [4- Braço Direito]                                          |");
+                        }
+                        if (monstro[ameaca].pernaEsquerda>0){
+                            System.out.println("| [5- Perna Esquerda]                                         |");
+                        }
+                        if (monstro[ameaca].pernaDireita>0){
+                            System.out.println("| [6- Perna Direita]                                          |");
+                        }
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("  "+p1.nome);
                         System.out.println("    HP: "+p1.vida+"/"+p1.vidaMaxima+"  MP: "+p1.mana+"/"+p1.manaMaxima);
-                        System.out.println("");       
+                        System.out.println("");
+                        resposta = scanner.nextInt();
+                        switch (resposta) {
+                            case 1:
+                            teste = testeAtaqueP();
+                            if (teste = true){
+                               guarde = danoP();
+                               monstro[ameaca].torso = monstro[ameaca].torso-guarde;
+                            }else{
+                                resposta = rolagem.nextInt(5)+1;
+                                switch (resposta) {
+                                    case 1:
+                                    System.out.println("Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
+                                        break;
+                                    case 2:
+                                    System.out.println("Seu erro abriu uma enorme brecha, o inimigo se aproveita disso...");
+                                        break;
+                                    case 3:
+                                    System.out.println("A ofensiva falhou; o inimigo sorri com desdém!");
+                                        break;
+                                    case 4:
+                                    System.out.println("Seu ataque ecoou no ar, deixando apenas frustração!");
+                                        break;
+                                    case 5:
+                                    System.out.println("Nem mesmo a sorte pode estar no seu lado dessa vez.");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                                break;
+                            case 2:
+                            if (monstro[ameaca].cabeca>0){
+                                teste = acertarCabeca();
+                                if (teste = true){
+                               guarde = danoP();
+                               monstro[ameaca].cabeca = monstro[ameaca].cabeca-guarde;
+                                }else{
+                                    resposta = rolagem.nextInt(5)+1;
+                                 switch (resposta) {
+                                    case 1:
+                                    System.out.println("Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
+                                        break;
+                                    case 2:
+                                    System.out.println("Seu erro abriu uma enorme brecha, o inimigo se aproveita disso...");
+                                        break;
+                                    case 3:
+                                    System.out.println("A ofensiva falhou; o inimigo sorri com desdém!");
+                                        break;
+                                    case 4:
+                                    System.out.println("Seu ataque ecoou no ar, deixando apenas frustração!");
+                                        break;
+                                    case 5:
+                                    System.out.println("Nem mesmo a sorte pode estar no seu lado dessa vez.");
+                                        break;
+                                    default:
+                                        break;
+                                 }
+                                }
+                            }else{
+                                System.out.println("Você observa que sua cabeça caiu faz algum tempo... Como será que ele ainda luta?");
+                            }
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+
+                                break;
+                            case 5:
+                            
+                                break;
+                            case 6:
+
+                                break;
+                            default:
+                            System.out.println("Suas tentativas acabam sendo em vão... Você erra.");
+                                break;
+                        }       
                             break;
                         case 2:
 
