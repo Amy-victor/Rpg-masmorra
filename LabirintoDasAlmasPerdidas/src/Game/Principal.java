@@ -5,7 +5,7 @@ public class Principal {
     // área de carregar as variáveis
     static Scanner scanner = new Scanner(System.in);
     static Random rolagem = new Random();
-    static boolean teste;
+    static boolean teste, combate;
     static Personagem p1 = new Personagem();
     static Monstros[] monstro = new Monstros[5];
     static int resposta, diff, ameaca;
@@ -727,7 +727,7 @@ public class Principal {
                                 }
                                 break;
                             case 4:
-                                if (monstro[ameaca].bracoDireito) {
+                                if (monstro[ameaca].bracoDireito > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
@@ -768,7 +768,7 @@ public class Principal {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
-                                        monstro[ameaca].pernaEsquerda = monstro[ameaca].Esquerda - guarde;
+                                        monstro[ameaca].pernaEsquerda = monstro[ameaca].pernaEsquerda - guarde;
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
@@ -805,7 +805,7 @@ public class Principal {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
-                                        monstro[ameaca].pernaDireita = monstro[ameaca].Direita - guarde;
+                                        monstro[ameaca].pernaDireita = monstro[ameaca].pernaDireita - guarde;
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
@@ -835,7 +835,7 @@ public class Principal {
                                 } else {
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
-                                    }
+                                }
                                 break;
                             default:
                                 System.out.println("Suas tentativas acabam sendo em vão... Você erra.");
@@ -843,10 +843,10 @@ public class Principal {
                         }
                         break;
                     case 2:
-
+                        habilidades();
                         break;
                     case 3:
-
+                        itens();
                         break;
                     case 4:
 
@@ -868,6 +868,65 @@ public class Principal {
     }
 
     // procedimentos para status
+    public static boolean habilidades() {
+        String resposta;
+        boolean uso = false;
+        System.out.println(" ________________________________________________");
+        for (int i = 0; i < 3; i++) {
+
+            System.out.println("| " + p1.habilidade[i] + "                      |");
+        }
+        System.out.println("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+        System.out.println("{Sair}");
+        resposta = scanner.nextLine();
+        if (combate == true) {
+            switch ("") {
+                case "":
+
+                    break;
+
+                default:
+                uso = false;
+                    break;
+            }
+        } else {
+            switch (resposta) {
+                case "":
+
+                    break;
+
+                default:
+                uso = false;
+                    break;
+            }
+        }
+        return uso;
+    }
+
+    public static boolean itens(){
+        String resposta;
+        boolean uso = false;
+        for (int i = 0; i < 6; i++) {
+            System.out.println(" __________________________________");
+            if (p1.quantidadeItem[1] != 0) {
+                System.out.println("| " + p1.quantidadeItem[i] + " " + p1.item[i] + " |");
+            }
+        }
+        System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+        System.out.println("{sair}");
+        resposta = scanner.nextLine();
+        switch (resposta) {
+            case "":
+                
+                break;
+        
+            default:
+            uso = false;
+                break;
+        }
+        return uso;
+    }
+
     public static int mana() {
         int guarde = 0;
         switch (p1.classe) {
