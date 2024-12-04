@@ -381,10 +381,40 @@ public class Principal {
         return dado;
     }
 
+    public static boolean fugir() {
+        boolean fugiu = false, habFuga = false, maiorDestreza = false;
+        int dFuga = 0;
+        for (int i = 0; i < p1.habilidade.length; i++) {
+            if (p1.habilidade[i] == "") {
+                habFuga = true;
+            }
+        }
+        if (p1.destreza > monstro[ameaca].fuga) {
+            maiorDestreza = true;
+        }
+        if (habFuga == true && maiorDestreza == true) {
+            dFuga = rolagem.nextInt(2) + 1;
+            if (dFuga == 2) {
+                fugiu = true;
+            }
+        } else if (habFuga == true || maiorDestreza == true) {
+            dFuga = rolagem.nextInt(3) + 1;
+            if (dFuga == 3) {
+                fugiu = true;
+            }
+        } else {
+            dFuga = rolagem.nextInt(4) + 1;
+            if (dFuga == 4) {
+                fugiu = true;
+            }
+        }
+        return fugiu;
+    }
+
     public static boolean batalha() {
-        boolean vitoria = false, acertoM = false, acertoP = false;
+        boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false;
         int guarde = 0;
-        while (monstro[ameaca].torso > 0) {
+        while (vitoria == false) {
             if (p1.vida > 0) {
                 if (monstro[ameaca].cabeca > 0 && monstro[ameaca].bracoEsquerdo > 0 && monstro[ameaca].bracoDireito > 0
                         && monstro[ameaca].pernaEsquerda > 0 && monstro[ameaca].pernaDireita > 0) {
@@ -843,25 +873,30 @@ public class Principal {
                         }
                         break;
                     case 2:
-                        habilidades();
+                        acao = habilidades();
                         break;
                     case 3:
-                        itens();
+                        acao = itens();
                         break;
                     case 4:
-
+                        fuga = fugir();
                         break;
                     default:
                         System.out.println("Você tenta agir, mas falha miseravelmente.");
+                        acao = true;
                         break;
                 }
+                if (acao == true && fuga == false){
                 acertoM = testeAtaqueM();
+                }else if (fuga == true){
+                    vitoria = true;
+                }
                 if (acertoM == true) {
                     guarde = danoM();
                     p1.vida = p1.vida - guarde;
                 }
             } else {
-
+                vitoria = true;
             }
         }
         return vitoria;
@@ -872,7 +907,7 @@ public class Principal {
         String resposta;
         boolean uso = false;
         System.out.println(" ________________________________________________");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < p1.habilidade.length; i++) {
 
             System.out.println("| " + p1.habilidade[i] + "                      |");
         }
@@ -886,7 +921,7 @@ public class Principal {
                     break;
 
                 default:
-                uso = false;
+                    uso = false;
                     break;
             }
         } else {
@@ -896,19 +931,19 @@ public class Principal {
                     break;
 
                 default:
-                uso = false;
+                    uso = false;
                     break;
             }
         }
         return uso;
     }
 
-    public static boolean itens(){
+    public static boolean itens() {
         String resposta;
         boolean uso = false;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < p1.item.length; i++) {
             System.out.println(" __________________________________");
-            if (p1.quantidadeItem[1] != 0) {
+            if (p1.quantidadeItem[i] != 0) {
                 System.out.println("| " + p1.quantidadeItem[i] + " " + p1.item[i] + " |");
             }
         }
@@ -917,11 +952,11 @@ public class Principal {
         resposta = scanner.nextLine();
         switch (resposta) {
             case "":
-                
+
                 break;
-        
+
             default:
-            uso = false;
+                uso = false;
                 break;
         }
         return uso;
