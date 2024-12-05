@@ -11,7 +11,6 @@ public class Principal {
     static int resposta, diff, ameaca;
 
     public static void main(String[] args) {
-        System.out.println("Você ganhou?" + teste);
         monstro[0] = new Monstros();
     }
 
@@ -23,6 +22,7 @@ public class Principal {
     }
 
     // procedimento de rolagens
+    //métod de d2 (moeda)
     public static boolean moeda() {
         int i = 1;
         boolean acerto = false;
@@ -61,7 +61,7 @@ public class Principal {
         }
         return acerto;
     }
-
+    //método para testes de força
     public static boolean testeForca() {
         int d6 = rolagem.nextInt(6) + 1 + p1.forca - p1.debuff;
         boolean acerto = false;
@@ -89,8 +89,9 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do método de força
     }
-
+    //método para testes de destreza
     public static boolean testeDestreza() {
         int d6 = rolagem.nextInt(6) + 1 + p1.destreza - p1.debuff;
         boolean acerto = false;
@@ -118,8 +119,9 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do método de destreza
     }
-
+    //método para testes de constituição
     public static boolean testeConstituicao() {
         int d6 = rolagem.nextInt(6) + 1 + p1.constituicao - p1.debuff;
         boolean acerto = false;
@@ -147,8 +149,9 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do métodco de constituição
     }
-
+    //método para testes de sabedoria
     public static boolean testeSabedoria() {
         int d6 = rolagem.nextInt(6) + 1 + p1.sabedoria - p1.debuff;
         boolean acerto = false;
@@ -176,8 +179,9 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do método de sabedoria
     }
-
+    //método para teste de inteligência
     public static boolean testeInteligencia() {
         int d6 = rolagem.nextInt(6) + 1 + p1.inteligencia - p1.debuff;
         boolean acerto = false;
@@ -205,8 +209,9 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do método de inteligência
     }
-
+    //método para testes de carisma
     public static boolean testeCarisma() {
         int d6 = rolagem.nextInt(6) + 1 + p1.carisma - p1.debuff;
         boolean acerto = false;
@@ -234,12 +239,14 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
+        //fim do método de carisma
     }
-
+    //método para rolagem de teste de ataque do personagem
     public static boolean testeAtaqueP() {
         int d6 = rolagem.nextInt(6) + 1 + p1.buff - p1.debuff;
         boolean acerto = false, fineza = false;
         for (int i = 0; i > 2; i++) {
+            //para encontrar a habilidade Fineza, que permite atacar com destreza
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
@@ -250,16 +257,19 @@ public class Principal {
             d6 = d6 + p1.forca;
         }
         System.out.println(d6);
+        //acerta se o valor for maior que a defesa do inimigo
         if (d6 >= monstro[ameaca].defesa) {
             acerto = true;
         }
         return acerto;
+        //fim do método de ataque do personagem
     }
-
+    //teste de rolagem para acertar a cabeça do inimigo
     public static boolean acertarCabeca() {
         boolean acerto = false, fineza = false;
         int d6 = rolagem.nextInt(6) + 1 + p1.buff - p1.debuff;
         for (int i = 0; i > 2; i++) {
+            //para encontrar a habilidade Fineza, que permite atacar com destreza
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
@@ -269,23 +279,27 @@ public class Principal {
         } else {
             d6 = d6 + p1.forca;
         }
+        //se as pernas estiverem danificadas é mais facil de acertar
         if (monstro[ameaca].pernaDireita <= 0 && monstro[ameaca].pernaEsquerda <= 0) {
             monstro[ameaca].defCabeca = monstro[ameaca].defesa;
         }
+        //se o dado for maior que a defesa da cabeça o personagem acerta
         if (d6 >= monstro[ameaca].defCabeca) {
             acerto = true;
         }
         return acerto;
+        //fim do método de rolagem de ataque na cabeça
     }
-
+    //método para rolagem de dano do personagem
     public static int danoP() {
         int dado = 0;
         boolean fineza = false;
         for (int i = 0; i > 2; i++) {
+            //para encontrar a habilidade Fineza, que adicionará destreza no dano
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
-        }
+        }//rolagem de dados
         if (fineza == true) {
             switch (p1.dadoDano) {
                 case "d":
@@ -341,18 +355,21 @@ public class Principal {
         }
         return dado;
     }
-
+    //método para teste de ataque do monstro
     public static boolean testeAtaqueM() {
         int d6 = rolagem.nextInt(6) + 1 + monstro[ameaca].modAcerto + monstro[ameaca].buff - monstro[ameaca].debuff;
         boolean acerto = false;
+        //acerta se o dado for maior que a defesa do personagem
         if (d6 >= p1.defesa) {
             acerto = true;
         }
         return acerto;
+        //fim do método para teste de ataque do monstro
     }
-
+    //método de rolagem de dano do monstro
     public static int danoM() {
         int dado = 0;
+        //rolagens de dados
         switch (p1.dadoDano) {
             case "1d4":
                 dado = rolagem.nextInt(4) + 1 + monstro[ameaca].modDano + monstro[ameaca].buff - monstro[ameaca].debuff;
@@ -379,8 +396,9 @@ public class Principal {
                 break;
         }
         return dado;
+        //fim do método de rolagem de dano
     }
-
+    //método para fugir do combate
     public static boolean fugir() {
         boolean fugiu = false, habFuga = false, maiorDestreza = false;
         int dFuga = 0;
