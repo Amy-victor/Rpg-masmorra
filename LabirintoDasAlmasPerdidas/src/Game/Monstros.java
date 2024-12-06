@@ -1,5 +1,5 @@
 public class Monstros extends Status{
 
-    int modDano, modAcerto, torso, bracoEsquerdo, bracoDireito, pernaEsquerda, pernaDireita, cabeca, defCabeca,  fuga;
+    int modDano, modAcerto, torso, bracoEsquerdo, bracoDireito, pernaEsquerda, pernaDireita, cabeca, defCabeca,  fuga, vida;
     String[] habilidade;
 }

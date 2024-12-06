@@ -22,7 +22,8 @@ public class Principal {
     }
 
     // procedimento de rolagens
-    //métod de d2 (moeda)
+
+    //método de d2 (moeda)
     public static boolean moeda() {
         int i = 1;
         boolean acerto = false;
