@@ -427,13 +427,15 @@ public class Principal {
             }
         }
         return fugiu;
+        //fim do método de fuga
     }
-
+    //método de batalha
     public static boolean batalha() {
         boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false;
         int guarde = 0;
-        while (vitoria == false) {
-            if (p1.vida > 0) {
+        while (combate == true) { //vai repetir até matar o monstro ou fugir 
+            if (p1.vida > 0 && monstro[ameaca].vida > 0) {  //se o player tiver mais de 0 de vida continua o combate
+                //Sprites em ASCII
                 if (monstro[ameaca].cabeca > 0 && monstro[ameaca].bracoEsquerdo > 0 && monstro[ameaca].bracoDireito > 0
                         && monstro[ameaca].pernaEsquerda > 0 && monstro[ameaca].pernaDireita > 0) {
                     System.out.println("                            O                                  ");
@@ -630,13 +632,14 @@ public class Principal {
                     System.out.println("                      ___,./ \\.,___     ");
                     System.out.println("                                 -  /----                            ");
                 }
+                //Menu de escolha
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("| Uma pergunta nasce, será que tudo valeu apena? Infelizmente não |");
                 System.out.println("| há tempo para elas ser repondida... Agora é sua vez," + p1.nome + "!|");
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("  " + p1.nome);
-                System.out
-                        .println("    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
+               //Status 
+                System.out.println("    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
                 System.out.println("");
                 System.out.println(" _________    ______________    _______    ________ ");
                 System.out.println("|1- ATACAR|  |2- HABILIDADES|  |3- ITEM|  |4- FUGIR|");
@@ -644,8 +647,8 @@ public class Principal {
                 resposta = scanner.nextInt();
                 clear();
                 switch (resposta) {
+                    //Menu de atacar
                     case 1:
-
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("|                    " + monstro[ameaca].nome + "                     |");
                         System.out.println("| [1- Torso]                                                      |");
@@ -670,8 +673,9 @@ public class Principal {
                                 "    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
                         System.out.println("");
                         resposta = scanner.nextInt();
+                        clear();
                         switch (resposta) {
-                            case 1:
+                            case 1: //atacar torso
                                 acertoP = testeAtaqueP();
                                 if (acertoP == true) {
                                     guarde = danoP();
@@ -679,6 +683,7 @@ public class Principal {
                                 } else {
                                     resposta = rolagem.nextInt(5) + 1;
                                     switch (resposta) {
+                                        //mensagens de erro no ataque
                                         case 1:
                                             System.out.println(
                                                     "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -701,7 +706,7 @@ public class Principal {
                                     }
                                 }
                                 break;
-                            case 2:
+                            case 2: //atacar cabeça
                                 if (monstro[ameaca].cabeca > 0) {
                                     acertoP = acertarCabeca();
                                     if (acertoP == true) {
@@ -710,6 +715,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
+                                            //mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -733,12 +739,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else {//mensagem se a cabeça estiver com vida 0
                                     System.out.println(
                                             "Você observa que sua cabeça caiu faz algum tempo... Como será que ele ainda luta?");
                                 }
                                 break;
-                            case 3:
+                            case 3://atacar braço esquerdo
                                 if (monstro[ameaca].bracoEsquerdo > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -747,6 +753,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
+                                            //mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -770,11 +777,11 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else {//mensagem caso o braço esquerdo esteja com vida 0
                                     System.out.println("Você observa que seu braço já está no chão, que desgraça.");
                                 }
                                 break;
-                            case 4:
+                            case 4: //atacar braço direito
                                 if (monstro[ameaca].bracoDireito > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -783,6 +790,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
+                                            //mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -806,12 +814,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else {//mensagem caso o braço direito esteja com vida 0
                                     System.out.println(
                                             "Você observa que seu braço caiu, juntamente de sua arma. Pelo menos estamos na vantagem, né?");
                                 }
                                 break;
-                            case 5:
+                            case 5: //atacar perna esquerda
                                 if (monstro[ameaca].pernaEsquerda > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -820,6 +828,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
+                                            //mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -843,12 +852,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else {//mensagem caso a perna esquerda esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
                                 break;
-                            case 6:
+                            case 6: //atacar perna direita
                                 if (monstro[ameaca].pernaDireita > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -857,6 +866,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
+                                            //mensagem de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -880,7 +890,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else {//mensagem caso a perna direita esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
@@ -890,20 +900,24 @@ public class Principal {
                                 break;
                         }
                         break;
-                    case 2:
+                    case 2://usar habilidades
                         acao = habilidades();
+                        clear();
                         break;
-                    case 3:
+                    case 3://usar itens
                         acao = itens();
+                        clear();
                         break;
-                    case 4:
+                    case 4://tentar fugir
                         fuga = fugir();
+                        clear();
                         break;
                     default:
                         System.out.println("Você tenta agir, mas falha miseravelmente.");
                         acao = true;
+                        clear();
                         break;
-                }
+                }//ataque do monstro no final do turno
                 if (acao == true && fuga == false){
                 acertoM = testeAtaqueM();
                 }else if (fuga == true){
@@ -913,26 +927,34 @@ public class Principal {
                     guarde = danoM();
                     p1.vida = p1.vida - guarde;
                 }
-            } else {
+            } else if (fuga == true ||  monstro[ameaca].vida<=0){ //se conseguir fugir ou o monstro tiver 0 de vida 
+                combate = false;
                 vitoria = true;
+            }else{ //se o player tiver 0 de vida
+                combate = false;
+                vitoria = false;
             }
-        }
+        } 
+        clear();
         return vitoria;
-    }
+    }//fim do método de batalha
 
-    // procedimentos para status
+    // procedimentos para status do jogador
+
+    //método para o menu de habilidades
     public static boolean habilidades() {
         String resposta;
         boolean uso = false;
         System.out.println(" ________________________________________________");
-        for (int i = 0; i < p1.habilidade.length; i++) {
+        for (int i = 0; i < p1.habilidade.length; i++) { //irá procurar as habilidades e mostrará no menu
 
             System.out.println("| " + p1.habilidade[i] + "                      |");
         }
         System.out.println("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
         System.out.println("{Sair}");
         resposta = scanner.nextLine();
-        if (combate == true) {
+        clear();
+        if (combate == true) {//caso esteja no combate 
             switch ("") {
                 case "":
 
@@ -943,7 +965,7 @@ public class Principal {
                     break;
             }
         } else {
-            switch (resposta) {
+            switch (resposta) {//caso esteja fora do combate
                 case "":
 
                     break;
@@ -955,12 +977,12 @@ public class Principal {
         }
         return uso;
     }
-
+    //método para o menu de itens
     public static boolean itens() {
         String resposta;
         boolean uso = false;
-        for (int i = 0; i < p1.item.length; i++) {
-            System.out.println(" __________________________________");
+        System.out.println(" __________________________________");
+        for (int i = 0; i < p1.item.length; i++) { //repetição para mostrar os itens no menu
             if (p1.quantidadeItem[i] != 0) {
                 System.out.println("| " + p1.quantidadeItem[i] + " " + p1.item[i] + " |");
             }
@@ -968,6 +990,7 @@ public class Principal {
         System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
         System.out.println("{sair}");
         resposta = scanner.nextLine();
+        clear();
         switch (resposta) {
             case "":
 
@@ -979,7 +1002,7 @@ public class Principal {
         }
         return uso;
     }
-
+    //método para calcular a mana do personagem
     public static int mana() {
         int guarde = 0;
         switch (p1.classe) {
@@ -1012,7 +1035,7 @@ public class Principal {
         }
         return guarde;
     }
-
+    //método para calcular vida do personagem
     public static int hp() {
         int guarde = 0;
         switch (p1.classe) {
@@ -1045,7 +1068,7 @@ public class Principal {
         }
         return guarde;
     }
-
+    //método para calcular defesa do personagem
     public static int defesa() {
         int guarde = 4 + p1.destreza + p1.defesa;
         return guarde;
