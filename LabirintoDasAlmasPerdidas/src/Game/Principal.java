@@ -11,7 +11,19 @@ public class Principal {
     static int resposta, diff, ameaca;
 
     public static void main(String[] args) {
+        
+        //Carregamento dos Monstros
         monstro[0] = new Monstros();
+        monstro[1] = new Monstros();
+        monstro[2] = new Monstros();
+        monstro[3] = new Monstros();
+        monstro[4] = new Monstros();
+        monstro[5] = new Monstros();
+        monstro[6] = new Monstros();
+
+        //Tela inicial
+
+
     }
 
     // procedimento para limpar a tela
@@ -642,9 +654,9 @@ public class Principal {
                //Status 
                 System.out.println("    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
                 System.out.println("");
-                System.out.println(" _________    ______________    _______    ________ ");
-                System.out.println("|1- ATACAR|  |2- HABILIDADES|  |3- ITEM|  |4- FUGIR|");
-                System.out.println(" ‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾ ");
+                System.out.println(" _________    ______________   _________________    _______    ________ ");
+                System.out.println("|1- ATACAR|  |2- HABILIDADES| |3- ANÁLISE RÁPIDA|  |4- ITEM|  |5- FUGIR|");
+                System.out.println(" ‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾ ");
                 resposta = scanner.nextInt();
                 clear();
                 switch (resposta) {
@@ -905,11 +917,17 @@ public class Principal {
                         acao = habilidades();
                         clear();
                         break;
-                    case 3://usar itens
+                    case 3://analisar os atributos inimigos
+                        acao = true;
+                        System.out.println();
+                        System.out.println("| Seus olhos passam rapidamente pelo inimigo ");
+                        System.out.println();
+                        
+                    case 4://usar itens
                         acao = itens();
                         clear();
                         break;
-                    case 4://tentar fugir
+                    case 5://tentar fugir
                         fuga = fugir();
                         clear();
                         break;
