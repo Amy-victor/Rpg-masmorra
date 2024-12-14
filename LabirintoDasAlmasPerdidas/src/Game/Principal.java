@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class Principal {
     // área de carregar as variáveis
@@ -9,21 +10,66 @@ public class Principal {
     static Personagem p1 = new Personagem();
     static Monstros[] monstro = new Monstros[5];
     static int resposta, diff, ameaca;
+    static Timer timer = new Timer();
 
     public static void main(String[] args) {
-        
         //Carregamento dos Monstros
+        
         monstro[0] = new Monstros();
         monstro[1] = new Monstros();
         monstro[2] = new Monstros();
         monstro[3] = new Monstros();
         monstro[4] = new Monstros();
-        monstro[5] = new Monstros();
-        monstro[6] = new Monstros();
 
         //Tela inicial
-
-
+        timer.schedule(null, 2000);
+        System.out.println("                     ________________________________    ");
+        System.out.println("                    |=~Labirinto Das Almas Perdidas~=|                      ");
+        System.out.println("                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯         ");
+        System.out.println("                              ~                             ");
+        System.out.println("                     ´            `            ");
+        System.out.println("                          ~~                 ");
+        System.out.println("                   ~~         (~~|                      ");
+        System.out.println("               ~~~~             / \\            ~       ");
+        System.out.println("          vvv       ´          / o \\      ~~~         ");
+        System.out.println("             vv    __   ~~   _/_____\\_       (\\/)        ´");
+        System.out.println("                   /\\         |~~~~~|         /\\          ");
+        System.out.println("                  /__\\        |~~~~~|        /__\\       * ");
+        System.out.println("                  |**|        |~~~~~| v      |**|        ");
+        System.out.println("                  |**|        |~~~~~|        |**|         ");
+        System.out.println("                  |**|        |~~_~~|        |**|         ");
+        System.out.println("     ¨            |**|        |~/|\\~|        |**|v      ");
+        System.out.println("                 /´´´´\\       |/|||\\|       /´´´´\\         ");
+        System.out.println("                /______\\    v |||||||      /______\\         ");
+        System.out.println("                |      |      |-----|      |      |");
+        System.out.println("               /`´`´`´`´\\/\\/\\/´`´`´`´\\/\\/\\/`´`´`´`´\\  ");
+        System.out.println("               |________|_____|_____|_____|________|       ");
+        System.out.println("               |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|       ");
+        System.out.println("               |~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~|   ´´´´");
+        System.out.println("               |~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~|              ");
+        System.out.println("               |~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~~|    ´´        ");
+        System.out.println("       ´`      |~~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~/~~~~|   .");
+        System.out.println("               |~~~~~\\~~~~~~~~~~~~~~~~~~~~~~~/~~~~~|   ");
+        System.out.println("               |~~~~~~\\_____________________/~~~~~~|   ´");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("     ~~        |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~| _  ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|/ ^  ");
+        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+        System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+        System.out.println("dica: aperte enter para passar os diálogos");
+        System.out.println();
+        System.out.println("                             |Jogar?| ");
+        System.out.println("                              (y/n) ");
+        System.out.println("                                ");
+        p1.nome = scanner.nextLine();
+        //Distribuição de atributos
+        for (int i = 0; i < args.length; i++) {
+            
+        }
     }
 
     // procedimento para limpar a tela
