@@ -9,79 +9,283 @@ public class Principal {
     static boolean teste, combate;
     static Personagem p1 = new Personagem();
     static Monstros[] monstro = new Monstros[5];
-    static int resposta, diff, ameaca;
+    static int resposta, diff, ameaca, dificuldade; // diff = para testes, dificuldade = para o jogo,
     static Timer timer = new Timer();
 
     public static void main(String[] args) {
-        //Carregamento dos Monstros
-        
+        boolean secret = false;
+        // Carregamento dos Monstros
+
         monstro[0] = new Monstros();
         monstro[1] = new Monstros();
         monstro[2] = new Monstros();
         monstro[3] = new Monstros();
         monstro[4] = new Monstros();
-
-        //Tela inicial
-        timer.schedule(null, 2000);
-        System.out.println("                     ________________________________    ");
-        System.out.println("                    |=~Labirinto Das Almas Perdidas~=|                      ");
-        System.out.println("                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯         ");
-        System.out.println("                              ~                             ");
-        System.out.println("                     ´            `            ");
-        System.out.println("                          ~~                 ");
-        System.out.println("                   ~~         (~~|                      ");
-        System.out.println("               ~~~~             / \\            ~       ");
-        System.out.println("          vvv       ´          / o \\      ~~~         ");
-        System.out.println("             vv    __   ~~   _/_____\\_       (\\/)        ´");
-        System.out.println("                   /\\         |~~~~~|         /\\          ");
-        System.out.println("                  /__\\        |~~~~~|        /__\\       * ");
-        System.out.println("                  |**|        |~~~~~| v      |**|        ");
-        System.out.println("                  |**|        |~~~~~|        |**|         ");
-        System.out.println("                  |**|        |~~_~~|        |**|         ");
-        System.out.println("     ¨            |**|        |~/|\\~|        |**|v      ");
-        System.out.println("                 /´´´´\\       |/|||\\|       /´´´´\\         ");
-        System.out.println("                /______\\    v |||||||      /______\\         ");
-        System.out.println("                |      |      |-----|      |      |");
-        System.out.println("               /`´`´`´`´\\/\\/\\/´`´`´`´\\/\\/\\/`´`´`´`´\\  ");
-        System.out.println("               |________|_____|_____|_____|________|       ");
-        System.out.println("               |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|       ");
-        System.out.println("               |~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~|   ´´´´");
-        System.out.println("               |~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~|              ");
-        System.out.println("               |~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~~|    ´´        ");
-        System.out.println("       ´`      |~~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~/~~~~|   .");
-        System.out.println("               |~~~~~\\~~~~~~~~~~~~~~~~~~~~~~~/~~~~~|   ");
-        System.out.println("               |~~~~~~\\_____________________/~~~~~~|   ´");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("     ~~        |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~| _  ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|/ ^  ");
-        System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
-        System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-        System.out.println("dica: aperte enter para passar os diálogos");
-        System.out.println();
-        System.out.println("                             |Jogar?| ");
-        System.out.println("                              (y/n) ");
-        System.out.println("                                ");
+        resposta = 0;
+        dificuldade = 2; // 1 = fácil | 2 = Médio | 3 = Difícil | 2 é a dificuldade padrão
+        // Tela inicial
+        do {
+            System.out.println("                     ________________________________    ");
+            System.out.println("                    |=~Labirinto Das Almas Perdidas~=| ");
+            System.out.println("                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯        ");
+            System.out.println("                              ~                             ");
+            System.out.println("                                  `            ");
+            System.out.println("                          ~~                 ");
+            System.out.println("                   ~~         (~~|                      ");
+            System.out.println("               ~~~~             / \\            ~       ");
+            System.out.println("          vvv                  / o \\      ~~~         ");
+            System.out.println("             vv    __   ~~   _/_____\\_       (\\/)        ");
+            System.out.println("                   /\\         |~~~~~|         /\\          ");
+            System.out.println("                  /__\\        |~~~~~|        /__\\       * ");
+            System.out.println("                  |**|        |~~~~~| v      |**|        ");
+            System.out.println("                  |**|        |~~~~~|        |**|         ");
+            System.out.println("                  |**|        |~~_~~|        |**|         ");
+            System.out.println("                  |**|        |~/|\\~|        |**|v      ");
+            System.out.println("                 /````\\       |/|||\\|       /````\\         ");
+            System.out.println("                /______\\    v |||||||      /______\\         ");
+            System.out.println("                |      |      |-----|      |      |");
+            System.out.println("               /````````\\/\\/\\/```````\\/\\/\\/````````\\  ");
+            System.out.println("               |________|_____|_____|_____|________|       ");
+            System.out.println("               |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|       ");
+            System.out.println("               |~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~|   ");
+            System.out.println("               |~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~|              ");
+            System.out.println("               |~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~~|            ");
+            System.out.println("        `      |~~~~\\~~~~~~~~~~~~~~~~~~~~~~~~~/~~~~|   .");
+            System.out.println("               |~~~~~\\~~~~~~~~~~~~~~~~~~~~~~~/~~~~~|   ");
+            System.out.println("               |~~~~~~\\_____________________/~~~~~~|   ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("     ~~        |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~| _  ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|/ ^  ");
+            System.out.println("               |~~~~~~~|||||||||||||||||||||~~~~~~~|   ");
+            System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+            System.out.println("       dica: aperte enter para passar os diálogos");
+            System.out.println("            __________    _______________    _______       ");
+            System.out.println("           |1- Iniciar|  |2- Configuração|  |3- Sair|");
+            System.out.println("            ¯¯¯¯¯¯¯¯¯¯    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯    ¯¯¯¯¯¯¯      ");
+            System.out.println("                                                 Feito por: Amy P. ");
+            resposta = scanner.nextInt();
+            switch (resposta) {
+                case 1:
+                    resposta = 1;
+                    break;
+                case 2:
+                    clear();
+                    do {
+                        System.out.println("-------------------------------------------");
+                        System.out.println("|               Dificuldade               |");
+                        System.out.println("|    1- Fácil ~ 2- Médio ~ 3- Díficil     |");
+                        System.out.println("|                                         |");
+                        System.out.println("|   ~4- Sair~              ~5- Código~    |");
+                        System.out.println("-------------------------------------------");
+                        resposta = scanner.nextInt();
+                        switch (resposta) {
+                            case 1:
+                                resposta = 2;
+                                dificuldade = 1;
+                                break;
+                            case 2:
+                                resposta = 2;
+                                dificuldade = 2;
+                                break;
+                            case 3:
+                                resposta = 2;
+                                dificuldade = 3;
+                                break;
+                            case 5:
+                                clear();
+                                while (resposta==5) {
+                                System.out.print("Digite o Código:");
+                                String codigo = scanner.nextLine();
+                                if (codigo == "joão, entre o céu e a terra, você sempre será o mais honrado.") {
+                                    secret = true;
+                                    System.out.println("Você adquiriu a classe 'Honrado'");
+                                    resposta = scanner.nextInt();
+                                    resposta = 2;
+                                }else{
+                                    clear();
+                                    System.out.println("Código errado, deseja tentar novamente?");
+                                    System.out.println("          1- sim | 2- não");
+                                    resposta = scanner.nextInt();
+                                    clear();
+                                    if (resposta==1) {
+                                        resposta = 5;
+                                    }
+                                }
+                            }
+                            default:
+                                resposta = 0;
+                                break;
+                        }
+                        clear();
+                    } while (resposta == 2);
+                    break;
+                default:
+                    clear();
+                    System.out.println();
+                    System.out.println();
+                    System.out.println("                  ______________");
+                    System.out.println("                 |Fim de Jogo...|");
+                    System.out.println("                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ");
+                    System.exit(0);
+                    break;
+            }
+        } while (resposta == 0);
+        clear();
+        // nome do personagem
+        System.out.println("              ____________________");
+        System.out.println("             |+Nome do Personagem+|");
+        System.out.println("              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+        System.out.print("                Nome:");
         p1.nome = scanner.nextLine();
-        //Distribuição de atributos
-        for (int i = 0; i < args.length; i++) {
-            
+        clear();
+        // Distribuição de atributos
+        for (int i = 0; i < 4; i++) {
+            System.out.println("                ___________________________");
+            System.out.println("               |\\Distribuição de Atributos/|");
+            System.out.println("                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ");
+            System.out.println();
+            System.out.println("Você tem " + (5 - i) + " pontos para distribuir, sendo o máximo 3.");
+            System.out.println();
+            System.out.println("                   __________________________");
+            System.out.println("                  |Força:" + p1.forca + "           ");
+            System.out.println("                  |Destreza:" + p1.destreza + "        ");
+            System.out.println("                  |Constituição:" + p1.constituicao + "    ");
+            System.out.println("                  |Sabedoria:" + p1.sabedoria + "       ");
+            System.out.println("                  |Inteligência:" + p1.inteligencia + "    ");
+            System.out.println("                  |Carisma:" + p1.carisma + "         ");
+            System.out.println("                   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+            System.out.println();
+            System.out.println();
+            System.out.println(
+                    "{1- Força} {2- Destreza} {3- Constituição} {4- Sabedoria} {5- Inteligência} {6- Carisma}");
+            resposta = scanner.nextInt();
+            clear();
+            if (i > 2) {
+                switch (resposta) {
+                    case 1:
+                        p1.forca = p1.forca++;
+                        break;
+                    case 2:
+                        p1.destreza = p1.destreza++;
+                        break;
+                    case 3:
+                        p1.constituicao = p1.constituicao++;
+                        break;
+                    case 4:
+                        p1.sabedoria = p1.sabedoria++;
+                        break;
+                    case 5:
+                        p1.inteligencia = p1.inteligencia++;
+                        break;
+                    case 6:
+                        p1.carisma = p1.carisma++;
+                        break;
+                    default:
+                        i = i--;
+                        System.out.println("Opção não encontrada, favor escolher alguma possível");
+                        break;
+                }
+            } else {
+                switch (resposta) {
+                    case 1:
+                        if (p1.forca >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.forca = p1.forca++;
+                        }
+                        break;
+                    case 2:
+                        if (p1.destreza >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.destreza = p1.destreza++;
+                        }
+                        break;
+                    case 3:
+                        if (p1.constituicao >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.constituicao = p1.constituicao++;
+                        }
+                        break;
+                    case 4:
+                        if (p1.sabedoria >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.sabedoria = p1.sabedoria++;
+                        }
+                        break;
+                    case 5:
+                        if (p1.inteligencia >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.inteligencia = p1.inteligencia++;
+                        }
+                        break;
+                    case 6:
+                        if (p1.carisma >= 3) {
+                            i = i--;
+                            System.out.println("Esse atributo chegou ao limite, escolha outra opção.");
+                        } else {
+                            p1.carisma = p1.carisma++;
+                        }
+                        break;
+                    default:
+                        i = i--;
+                        System.out.println("Opção não encontrada, favor escolher alguma possível");
+                        break;
+                }
+            }
         }
+        System.out.println("                  ____________________  ");
+        System.out.println("                 ||Escolha sua Classe||");
+        System.out.println("                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+        System.out.println("___________________________________________________________ ");
+        System.out.println("|  1- Guerreiro  |  2- Mago  |  3- Bardo  |  4- Paladino  |");
+        System.out.println("| (+1 For e Const)  (+2 Sab)     (+2 Car)   (+1 Sab e Car)|");
+        System.out.println("|         O(~)          Ô  o         <Õ         __^D  ~~Ô>| ");
+        System.out.println("|        /|\\|          /|\\/          /|\\        )_)()\\|   | ");
+        System.out.println("|        / \\           / \\           / \\           /\\     |");
+        System.out.println("|=========================================================|");
+        System.out.println("|  5- Ladino  |  6- Clérigo  |  7- Druida  |  8- Bárbaro  | ");
+        System.out.println("|     (+2 Dex)  (+1 Sab e Car) (+1 Agi e Int)   (+2 For)  |  ");
+        System.out.println("|        ã             ê c            ö *           õ <|) |   ");
+        System.out.println("|      ~/|\\->         /|\\|           /|\\|        (*)|\\ |  |   ");
+        System.out.println("|       / \\           / \\|           / \\|          / \\    |  ");
+        System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+
+        System.out.print("Classe:");
+        p1.classe = scanner.nextLine();
     }
 
     // procedimento para limpar a tela
     public static void clear() {
-        for (int i = 0; i < 100; i++) {
-            System.out.println("");
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (final Exception e) {
+            // Tratar Exceptions
         }
     }
 
     // procedimento de rolagens
 
-    //método de d2 (moeda)
+    // método de d2 (moeda)
     public static boolean moeda() {
         int i = 1;
         boolean acerto = false;
@@ -120,7 +324,8 @@ public class Principal {
         }
         return acerto;
     }
-    //método para testes de força
+
+    // método para testes de força
     public static boolean testeForca() {
         int d6 = rolagem.nextInt(6) + 1 + p1.forca - p1.debuff;
         boolean acerto = false;
@@ -148,9 +353,10 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do método de força
+        // fim do método de força
     }
-    //método para testes de destreza
+
+    // método para testes de destreza
     public static boolean testeDestreza() {
         int d6 = rolagem.nextInt(6) + 1 + p1.destreza - p1.debuff;
         boolean acerto = false;
@@ -178,9 +384,10 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do método de destreza
+        // fim do método de destreza
     }
-    //método para testes de constituição
+
+    // método para testes de constituição
     public static boolean testeConstituicao() {
         int d6 = rolagem.nextInt(6) + 1 + p1.constituicao - p1.debuff;
         boolean acerto = false;
@@ -208,9 +415,10 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do métodco de constituição
+        // fim do métodco de constituição
     }
-    //método para testes de sabedoria
+
+    // método para testes de sabedoria
     public static boolean testeSabedoria() {
         int d6 = rolagem.nextInt(6) + 1 + p1.sabedoria - p1.debuff;
         boolean acerto = false;
@@ -238,9 +446,10 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do método de sabedoria
+        // fim do método de sabedoria
     }
-    //método para teste de inteligência
+
+    // método para teste de inteligência
     public static boolean testeInteligencia() {
         int d6 = rolagem.nextInt(6) + 1 + p1.inteligencia - p1.debuff;
         boolean acerto = false;
@@ -268,9 +477,10 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do método de inteligência
+        // fim do método de inteligência
     }
-    //método para testes de carisma
+
+    // método para testes de carisma
     public static boolean testeCarisma() {
         int d6 = rolagem.nextInt(6) + 1 + p1.carisma - p1.debuff;
         boolean acerto = false;
@@ -298,14 +508,15 @@ public class Principal {
         }
         System.out.println(d6);
         return acerto;
-        //fim do método de carisma
+        // fim do método de carisma
     }
-    //método para rolagem de teste de ataque do personagem
+
+    // método para rolagem de teste de ataque do personagem
     public static boolean testeAtaqueP() {
         int d6 = rolagem.nextInt(6) + 1 + p1.buff - p1.debuff;
         boolean acerto = false, fineza = false;
         for (int i = 0; i > 2; i++) {
-            //para encontrar a habilidade Fineza, que permite atacar com destreza
+            // para encontrar a habilidade Fineza, que permite atacar com destreza
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
@@ -316,19 +527,20 @@ public class Principal {
             d6 = d6 + p1.forca;
         }
         System.out.println(d6);
-        //acerta se o valor for maior que a defesa do inimigo
+        // acerta se o valor for maior que a defesa do inimigo
         if (d6 >= monstro[ameaca].defesa) {
             acerto = true;
         }
         return acerto;
-        //fim do método de ataque do personagem
+        // fim do método de ataque do personagem
     }
-    //teste de rolagem para acertar a cabeça do inimigo
+
+    // teste de rolagem para acertar a cabeça do inimigo
     public static boolean acertarCabeca() {
         boolean acerto = false, fineza = false;
         int d6 = rolagem.nextInt(6) + 1 + p1.buff - p1.debuff;
         for (int i = 0; i > 2; i++) {
-            //para encontrar a habilidade Fineza, que permite atacar com destreza
+            // para encontrar a habilidade Fineza, que permite atacar com destreza
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
@@ -338,27 +550,28 @@ public class Principal {
         } else {
             d6 = d6 + p1.forca;
         }
-        //se as pernas estiverem danificadas é mais facil de acertar
+        // se as pernas estiverem danificadas é mais facil de acertar
         if (monstro[ameaca].pernaDireita <= 0 && monstro[ameaca].pernaEsquerda <= 0) {
             monstro[ameaca].defCabeca = monstro[ameaca].defesa;
         }
-        //se o dado for maior que a defesa da cabeça o personagem acerta
+        // se o dado for maior que a defesa da cabeça o personagem acerta
         if (d6 >= monstro[ameaca].defCabeca) {
             acerto = true;
         }
         return acerto;
-        //fim do método de rolagem de ataque na cabeça
+        // fim do método de rolagem de ataque na cabeça
     }
-    //método para rolagem de dano do personagem
+
+    // método para rolagem de dano do personagem
     public static int danoP() {
         int dado = 0;
         boolean fineza = false;
         for (int i = 0; i > 2; i++) {
-            //para encontrar a habilidade Fineza, que adicionará destreza no dano
+            // para encontrar a habilidade Fineza, que adicionará destreza no dano
             if (p1.habilidade[i] == "Fineza") {
                 fineza = true;
             }
-        }//rolagem de dados
+        } // rolagem de dados
         if (fineza == true) {
             switch (p1.dadoDano) {
                 case "d":
@@ -414,21 +627,23 @@ public class Principal {
         }
         return dado;
     }
-    //método para teste de ataque do monstro
+
+    // método para teste de ataque do monstro
     public static boolean testeAtaqueM() {
         int d6 = rolagem.nextInt(6) + 1 + monstro[ameaca].modAcerto + monstro[ameaca].buff - monstro[ameaca].debuff;
         boolean acerto = false;
-        //acerta se o dado for maior que a defesa do personagem
+        // acerta se o dado for maior que a defesa do personagem
         if (d6 >= p1.defesa) {
             acerto = true;
         }
         return acerto;
-        //fim do método para teste de ataque do monstro
+        // fim do método para teste de ataque do monstro
     }
-    //método de rolagem de dano do monstro
+
+    // método de rolagem de dano do monstro
     public static int danoM() {
         int dado = 0;
-        //rolagens de dados
+        // rolagens de dados
         switch (p1.dadoDano) {
             case "1d4":
                 dado = rolagem.nextInt(4) + 1 + monstro[ameaca].modDano + monstro[ameaca].buff - monstro[ameaca].debuff;
@@ -455,9 +670,10 @@ public class Principal {
                 break;
         }
         return dado;
-        //fim do método de rolagem de dano
+        // fim do método de rolagem de dano
     }
-    //método para fugir do combate
+
+    // método para fugir do combate
     public static boolean fugir() {
         boolean fugiu = false, habFuga = false, maiorDestreza = false;
         int dFuga = 0;
@@ -486,15 +702,16 @@ public class Principal {
             }
         }
         return fugiu;
-        //fim do método de fuga
+        // fim do método de fuga
     }
-    //método de batalha
+
+    // método de batalha
     public static boolean batalha() {
         boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false;
         int guarde = 0;
-        while (combate == true) { //vai repetir até matar o monstro ou fugir 
-            if (p1.vida > 0 && monstro[ameaca].vida > 0) {  //se o player tiver mais de 0 de vida continua o combate
-                //Sprites em ASCII
+        while (combate == true) { // vai repetir até matar o monstro ou fugir
+            if (p1.vida > 0 && monstro[ameaca].vida > 0) { // se o player tiver mais de 0 de vida continua o combate
+                // Sprites em ASCII
                 if (monstro[ameaca].cabeca > 0 && monstro[ameaca].bracoEsquerdo > 0 && monstro[ameaca].bracoDireito > 0
                         && monstro[ameaca].pernaEsquerda > 0 && monstro[ameaca].pernaDireita > 0) {
                     System.out.println("                            O                                  ");
@@ -691,22 +908,23 @@ public class Principal {
                     System.out.println("                      ___,./ \\.,___     ");
                     System.out.println("                                 -  /----                            ");
                 }
-                //Menu de escolha
+                // Menu de escolha
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("| Uma pergunta nasce, será que tudo valeu apena? Infelizmente não |");
                 System.out.println("| há tempo para elas ser repondida... Agora é sua vez," + p1.nome + "!|");
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("  " + p1.nome);
-               //Status 
-                System.out.println("    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
+                // Status
+                System.out
+                        .println("    HP: " + p1.vida + "/" + p1.vidaMaxima + "  MP: " + p1.mana + "/" + p1.manaMaxima);
                 System.out.println("");
                 System.out.println(" _________    ______________   _________________    _______    ________ ");
                 System.out.println("|1- ATACAR|  |2- HABILIDADES| |3- ANÁLISE RÁPIDA|  |4- ITEM|  |5- FUGIR|");
-                System.out.println(" ‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾    ‾‾‾‾‾‾‾‾ ");
+                System.out.println(" ¯¯¯¯¯¯¯¯¯    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯    ¯¯¯¯¯¯¯    ¯¯¯¯¯¯¯¯");
                 resposta = scanner.nextInt();
                 clear();
                 switch (resposta) {
-                    //Menu de atacar
+                    // Menu de atacar
                     case 1:
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("|                    " + monstro[ameaca].nome + "                     |");
@@ -734,7 +952,7 @@ public class Principal {
                         resposta = scanner.nextInt();
                         clear();
                         switch (resposta) {
-                            case 1: //atacar torso
+                            case 1: // atacar torso
                                 acertoP = testeAtaqueP();
                                 if (acertoP == true) {
                                     guarde = danoP();
@@ -742,7 +960,7 @@ public class Principal {
                                 } else {
                                     resposta = rolagem.nextInt(5) + 1;
                                     switch (resposta) {
-                                        //mensagens de erro no ataque
+                                        // mensagens de erro no ataque
                                         case 1:
                                             System.out.println(
                                                     "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -765,7 +983,7 @@ public class Principal {
                                     }
                                 }
                                 break;
-                            case 2: //atacar cabeça
+                            case 2: // atacar cabeça
                                 if (monstro[ameaca].cabeca > 0) {
                                     acertoP = acertarCabeca();
                                     if (acertoP == true) {
@@ -774,7 +992,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
-                                            //mensagens de erro
+                                            // mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -798,12 +1016,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {//mensagem se a cabeça estiver com vida 0
+                                } else {// mensagem se a cabeça estiver com vida 0
                                     System.out.println(
                                             "Você observa que sua cabeça caiu faz algum tempo... Como será que ele ainda luta?");
                                 }
                                 break;
-                            case 3://atacar braço esquerdo
+                            case 3:// atacar braço esquerdo
                                 if (monstro[ameaca].bracoEsquerdo > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -812,7 +1030,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
-                                            //mensagens de erro
+                                            // mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -836,11 +1054,11 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {//mensagem caso o braço esquerdo esteja com vida 0
+                                } else {// mensagem caso o braço esquerdo esteja com vida 0
                                     System.out.println("Você observa que seu braço já está no chão, que desgraça.");
                                 }
                                 break;
-                            case 4: //atacar braço direito
+                            case 4: // atacar braço direito
                                 if (monstro[ameaca].bracoDireito > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -849,7 +1067,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
-                                            //mensagens de erro
+                                            // mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -873,12 +1091,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {//mensagem caso o braço direito esteja com vida 0
+                                } else {// mensagem caso o braço direito esteja com vida 0
                                     System.out.println(
                                             "Você observa que seu braço caiu, juntamente de sua arma. Pelo menos estamos na vantagem, né?");
                                 }
                                 break;
-                            case 5: //atacar perna esquerda
+                            case 5: // atacar perna esquerda
                                 if (monstro[ameaca].pernaEsquerda > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -887,7 +1105,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
-                                            //mensagens de erro
+                                            // mensagens de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -911,12 +1129,12 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {//mensagem caso a perna esquerda esteja com vida 0
+                                } else {// mensagem caso a perna esquerda esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
                                 break;
-                            case 6: //atacar perna direita
+                            case 6: // atacar perna direita
                                 if (monstro[ameaca].pernaDireita > 0) {
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
@@ -925,7 +1143,7 @@ public class Principal {
                                     } else {
                                         resposta = rolagem.nextInt(5) + 1;
                                         switch (resposta) {
-                                            //mensagem de erro
+                                            // mensagem de erro
                                             case 1:
                                                 System.out.println(
                                                         "Por mais certeiro que fosse, o alvo parece ter aguentado seu golpe...");
@@ -949,7 +1167,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {//mensagem caso a perna direita esteja com vida 0
+                                } else {// mensagem caso a perna direita esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
@@ -959,21 +1177,21 @@ public class Principal {
                                 break;
                         }
                         break;
-                    case 2://usar habilidades
+                    case 2:// usar habilidades
                         acao = habilidades();
                         clear();
                         break;
-                    case 3://analisar os atributos inimigos
+                    case 3:// analisar os atributos inimigos
                         acao = true;
                         System.out.println();
                         System.out.println("| Seus olhos passam rapidamente pelo inimigo ");
                         System.out.println();
-                        
-                    case 4://usar itens
+
+                    case 4:// usar itens
                         acao = itens();
                         clear();
                         break;
-                    case 5://tentar fugir
+                    case 5:// tentar fugir
                         fuga = fugir();
                         clear();
                         break;
@@ -982,44 +1200,44 @@ public class Principal {
                         acao = true;
                         clear();
                         break;
-                }//ataque do monstro no final do turno
-                if (acao == true && fuga == false){
-                acertoM = testeAtaqueM();
-                }else if (fuga == true){
+                }// ataque do monstro no final do turno
+                if (acao == true && fuga == false) {
+                    acertoM = testeAtaqueM();
+                } else if (fuga == true) {
                     vitoria = true;
                 }
                 if (acertoM == true) {
                     guarde = danoM();
                     p1.vida = p1.vida - guarde;
                 }
-            } else if (fuga == true ||  monstro[ameaca].vida<=0){ //se conseguir fugir ou o monstro tiver 0 de vida 
+            } else if (fuga == true || monstro[ameaca].vida <= 0) { // se conseguir fugir ou o monstro tiver 0 de vida
                 combate = false;
                 vitoria = true;
-            }else{ //se o player tiver 0 de vida
+            } else { // se o player tiver 0 de vida
                 combate = false;
                 vitoria = false;
             }
-        } 
+        }
         clear();
         return vitoria;
-    }//fim do método de batalha
+    }// fim do método de batalha
 
     // procedimentos para status do jogador
 
-    //método para o menu de habilidades
+    // método para o menu de habilidades
     public static boolean habilidades() {
         String resposta;
         boolean uso = false;
         System.out.println(" ________________________________________________");
-        for (int i = 0; i < p1.habilidade.length; i++) { //irá procurar as habilidades e mostrará no menu
+        for (int i = 0; i < p1.habilidade.length; i++) { // irá procurar as habilidades e mostrará no menu
 
             System.out.println("| " + p1.habilidade[i] + "                      |");
         }
-        System.out.println("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+        System.out.println(" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
         System.out.println("{Sair}");
         resposta = scanner.nextLine();
         clear();
-        if (combate == true) {//caso esteja no combate 
+        if (combate == true) {// caso esteja no combate
             switch ("") {
                 case "":
 
@@ -1030,7 +1248,7 @@ public class Principal {
                     break;
             }
         } else {
-            switch (resposta) {//caso esteja fora do combate
+            switch (resposta) {// caso esteja fora do combate
                 case "":
 
                     break;
@@ -1042,17 +1260,18 @@ public class Principal {
         }
         return uso;
     }
-    //método para o menu de itens
+
+    // método para o menu de itens
     public static boolean itens() {
         String resposta;
         boolean uso = false;
         System.out.println(" __________________________________");
-        for (int i = 0; i < p1.item.length; i++) { //repetição para mostrar os itens no menu
+        for (int i = 0; i < p1.item.length; i++) { // repetição para mostrar os itens no menu
             if (p1.quantidadeItem[i] != 0) {
                 System.out.println("| " + p1.quantidadeItem[i] + " " + p1.item[i] + " |");
             }
         }
-        System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+        System.out.println(" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
         System.out.println("{sair}");
         resposta = scanner.nextLine();
         clear();
@@ -1067,7 +1286,32 @@ public class Principal {
         }
         return uso;
     }
-    //método para calcular a mana do personagem
+
+    public static void guerreiro() {
+    }
+
+    public static void mago() {
+    }
+
+    public static void bardo() {
+    }
+
+    public static void paladino() {
+    }
+
+    public static void ladino() {
+    }
+
+    public static void clerigo() {
+    }
+
+    public static void barbaro() {
+    }
+
+    public static void honrado() {
+    }
+
+    // método para calcular a mana do personagem
     public static int mana() {
         int guarde = 0;
         switch (p1.classe) {
@@ -1100,7 +1344,8 @@ public class Principal {
         }
         return guarde;
     }
-    //método para calcular vida do personagem
+
+    // método para calcular vida do personagem
     public static int hp() {
         int guarde = 0;
         switch (p1.classe) {
@@ -1133,7 +1378,8 @@ public class Principal {
         }
         return guarde;
     }
-    //método para calcular defesa do personagem
+
+    // método para calcular defesa do personagem
     public static int defesa() {
         int guarde = 4 + p1.destreza + p1.defesa;
         return guarde;
