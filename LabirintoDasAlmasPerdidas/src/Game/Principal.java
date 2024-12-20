@@ -1347,14 +1347,16 @@ public class Principal {
                     clear();
                     break;
                 default:
-                clear();
+                    clear();
                     System.out.println("Escolha invalida.");
                     break;
             }
         } while (escolha == false);
         clear();
-        System.out.println("O tempo passou, suas lutas aumentaram gradativamente. Infelizmente durante suas explorações você foi");
-        System.out.println("surpreendido por vários ladinos, onde teve seus itens roubados e com um golpe fosse apagado repentinamente.");
+        System.out.println(
+                "O tempo passou, suas lutas aumentaram gradativamente. Infelizmente durante suas explorações você foi");
+        System.out.println(
+                "surpreendido por vários ladinos, onde teve seus itens roubados e com um golpe fosse apagado repentinamente.");
         resposta = scanner.nextInt();
         clear();
         System.out.println("Você está se preparando para mais um dia de luta. O cheiro da lavagem comida");
@@ -1562,7 +1564,326 @@ public class Principal {
 
     }
 
+    // classe mago
     public static void mago() {
+        boolean escolha = false;
+        System.out.println(
+                "Você se esconde de todos, seja por medo da morte por saber magia, ou apenas para estudar ainda mais sobre ela.");
+        System.out.println("De certo modo, suas habilidades em algum tipo de magia é invejável.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Começa mais um dia desgraçado na capela de Hofrick, sua função sempre foi ser apenas um servente do padre para");
+        System.out.println(
+                "ter um local para morar e comer de graça. Durante a madrugrada seu hobbie normalmente é estudar magias, mesmo");
+        System.out.println("que isso vá contra a capela.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Durante uma madrugada se esgueirando pelo escuro, você chega até a biblioteca do Papa. Ela tem vários livros");
+        System.out.println(
+                "de magias proibidas pela igreja. Todos os livros parecem meio queimados ou mofados, provavelmente porque foi");
+        System.out.println("dos feiticeiros mortos pela capela.");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("escolha o livro de magia");
+            System.out.println("");
+            System.out.println("{1- Piromancia}");
+            System.out.println("{2- Comunicação}");
+            System.out.println("{3- Transfiguração}");
+            resposta = scanner.nextInt(); // escolha das magias iniciais
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    p1.magia[0] = "Piromancia";
+                    System.out.println("Você obteve 'Piromancia'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Após procurar algum livro de feitiços de piromancia, você encontra um nas prateleiras queimadas ao lado da");
+                    System.out.println(
+                            "da escrivaninha do Papa. Os passos dos Auxiliares da igreja parecem passar pelo corredor, até que um bate");
+                    System.out.println("na porta e entra na biblioteca procurando o Padre.");
+                    break;
+                case 2:
+                    escolha = true;
+                    p1.magia[0] = "Infestação dos Ratos";
+                    System.out.println("Você obteve 'Infestação dos Ratos'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Após procurar algum livro de feitiços envolvendo comunicação, você encontra um nas prateleiras mofadas ao lado da");
+                    System.out.println(
+                            "da escrivaninha do Papa. Os passos dos Auxiliares da igreja parecem passar pelo corredor, até que um bate");
+                    System.out.println("na porta e entra na biblioteca procurando o Padre.");
+                    break;
+                case 3:
+                    escolha = true;
+                    p1.magia[0] = "Transfiguração Inerte: Revestimento";
+                    System.out.println("Você obteve 'Transfiguração Inerte: Revestimento'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Após procurar livros envolvendo Transfiguração corporal, Você encontra um perdido no chão perto da escrivaninha");
+                    System.out.println(
+                            "do Papa. Os passos dos Auxiliares da igreja parecem passar pelo corredor, até que um bate na porta e entra na");
+                    System.out.println("biblioteca procurando o Padre.");
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Você se esconde embaixo da escrivaninha do Papa, até ele sair da sala. Ao se levantar e olhar em volta para");
+        System.out.println("ter certeza que não há ninguém. Você decide olhar a escrivaninha buscando algo útil.");
+        resposta = scanner.nextInt(); // primeira escolha inicial de itens
+        clear();
+        do {
+            System.out.println("escolha o item");
+            System.out.println("");
+            System.out.println("{1- Necronomicon}");
+            System.out.println("{2- Amuleto Arcano}");
+            System.out.println("{3- Cetro do Papa}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    boolean sucesso = moeda();
+                    if (sucesso == false) {
+                        System.out.println(
+                                "O livro parece chamar muito sua atenção. Com sua mente despreparada, você o abre");
+                        System.out.println("e o livro parece suga-lá até sua existencia não ser uma mera lenda.");
+                        resposta = scanner.nextInt();
+                        clear();
+                        System.out.println("                  ______________");
+                        System.out.println("                 |Fim de Jogo...|");
+                        System.out.println("                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.print("Dica:");
+                        System.out.println(
+                                "O Necronomicon é proibido por dois motivos, suas magias e seu perigo causado aos leitores.");
+                        System.out.println("   Ler ele pode ser algo incrivelmente bom, ou sua perdição.");
+                        System.out.println("");
+                        System.out.println("");
+                        System.exit(0);
+                    } else {
+                        System.out.println(
+                                "Você abre uma das gavetas da escrivaninha e encontra um livro com uma capa de couro apodrecido, com");
+                        System.out.println(
+                                "um rosto na capa. Esse é um dos livros de magia proíbida até mesmo pelos bruxos.");
+                        System.out.println(
+                                "as escritas são aterrorizantes e parece sugar sua energia. Por sorte você parece entender tudo escrito.");
+                        resposta = scanner.nextInt();
+                        clear();
+                        resposta = rolagem.nextInt(2) + 1;
+                        switch (resposta) {
+                            case 1:
+                                p1.magia[1] = "Ferir";
+                                System.out.println("Você obteve 'Ferir'");
+                            case 2:
+                                p1.magia[1] = "Fumaça Necrótica";
+                                System.out.println("Você obteve'Fumaça Necrótica'");
+                            case 3:
+                                p1.magia[1] = "Amaldiçoar Arma";
+                                System.out.println("Você obteve 'Amaldiçoar Arma'");
+                        }
+                        clear();
+                        System.out.println(
+                                "Ao terminar de ler o livro, você o arremessa para longe, desejando nunca mais ver algo assim novamente.");
+                    }
+                    break;
+                case 2:
+                    escolha = true;
+                    p1.acessorio[0] = "Amuleto Arcano";
+                    System.out.println("você obteve Amuleto Arcano");
+                    resposta = scanner.nextInt();
+                    p1.modDanoMagico = 6;
+                    clear();
+                    System.out
+                            .println("Abrindo algumas gavetas você encontra um amuleto que exala mana de um cristal.");
+                    break;
+                case 3:
+                    escolha = true;
+                    p1.arma = "Cetro Elegante";
+                    System.out.println("Você obteve Cetro Elegante");
+                    p1.dadoDano = "1d6";
+                    p1.modDanoFisico = 2; // arma de uma mão, dano: 1d6+2
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Ao lado da escrivaninha você encontra um cetro de madeira refinada que era usado pelo papa.");
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        System.out
+                .println("Também é visível um mapa e um documento falando da masmorras das almas, dizendo que existe");
+        System.out
+                .println("vários pergaminhos ou objetos mágicos lá. Os perigos da masmorra são enormes, provavelmente");
+        System.out.println("o Papa estava preparando alguma escolta até lá.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("Você pega esses papéis e sai da sala antes que o peguem. Antes de sair, vem na sua mente");
+        System.out.println("que deve se preparar antes de partir.");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("escolha o local");
+            System.out.println("");
+            System.out.println("{1- Sala de Flagelo}");
+            System.out.println("{2- Biblioteca dos Irmãos}");
+            System.out.println("{3- Ir para o quarto e ir embora}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println(
+                            "Você espreita até a sala de flagelo, para ser penitênciado pelos seus pecados antes de sua");
+                    System.out.println(
+                            "jornada. A dor extrema e a ardência deles rastejando para fora o faz sentir revigorado. seu");
+                    System.out.println("corpo parece se sentir mais resistente ao que o mundano pode te oferecer.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você Obteve 'Físico Monstruoso'");
+                    p1.habilidade[0] = "Físico Monstruoso";
+                    p1.rd = 5;
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Os seus gritos de dor e sofrimento ecoam pela sala, parecendo alcançar os corredores da capela.");
+                    System.out.println("Você põe suas roupas novamente e corre para fora.");
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println(
+                            "Você corre e entra na biblioteca dos auxiliares, pretendendo apreciar e ler bíblias para aumentar");
+                    System.out.println(
+                            "seu uso de magias e entendimento sobre as bruxas. A biblioteca está totalmente vazia.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você leu 'As Passagens das Bruxas'");
+                    p1.manaMaxima = p1.manaMaxima + 8;
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "Enquanto termina de ler, você escuta a porta da biblioteca abrindo e passos adentrando. Ao espreitar");
+                    System.out.println(
+                            "da para perceber que são auxiliares. Na tentativa de passar despercebido, um lhe vê saindo.");
+                    break;
+                case 3:
+                    escolha = true;
+                    System.out.println(
+                            "Você entra no seu quarto e começa a preparar suas coisas, Arrumando suas biblías escondidas e frascos");
+                    System.out.println("de elixir da vida. Antes de partir você se ajoelha e reza.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.print("...");
+                    p1.manaMaxima = p1.manaMaxima + 3;
+                    System.out.println("Você termina de rezar.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    p1.item[3] = "Elixir da Vida";
+                    System.out.println("Você Obteve Elixir da vida"); // Cura vida e Mana
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você pega sua bolsa e começa a criar coragem para sair do quarto...");
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == true);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("No corredor da capela vários auxiliares o vê e começam a gritar pelo padre.");
+        System.out.println("na adrenalina do momento Você corre para fora antes de ser pego.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("Você decide descansar na taverna mais próxima antes de seguir viagem.");
+        System.out.println("Ela está basicamente vazia, havendo apenas alguns corpos jogados no ");
+        System.out.println("chão ou nas mesas. O cheiro de Cerveja antiga está volitando pelo ar da taverna.");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("escolha o que deseja levar");
+            System.out.println("{1- Medicamentos}");
+            System.out.println("{2- Itens Arcanos}");
+            System.out.println("{3- Equipamentos}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println("Você obteve 2 Poções de cura e 1 Bandagem");
+                    p1.item[0] = "Poção de Cura";
+                    p1.item[1] = "Poção de Cura";
+                    p1.item[2] = "Bandagem";
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println("Você obteve 1 Poção de Mana e 1 Anel Vampírico");
+                    p1.item[0] = "Poção de Mana";
+                    if (p1.acessorio[0] != "") {
+                        p1.acessorio[0] = "Anel Vampírico";
+                    } else {
+                        p1.acessorio[1] = "Anel Vampírico";
+                    }
+                    break;
+                case 3:
+                    escolha = true;
+                    System.out.println("Você obteve 1 Escudo leve e 1 Armadura de couro");
+                    p1.defesa = p1.defesa + 2;
+                    p1.escudo = 1;
+                    p1.rd = p1.rd + 2;
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        resposta = scanner.nextInt();
+        clear();
+        System.out
+                .println("No outro dia Você segue viagem a caminho da Masmorra. Pegando um cavalo que havia na frente");
+        System.out.println(
+                "da taverna, são vários e vários dias. Aos poucos adentrando uma floresta nevoada, totalmente");
+        System.out
+                .println("silenciosa. Quando finalmente encontra a masmorra você decide descer do cavalo e adentra-la");
+        resposta = scanner.nextInt();
+        clear();
+        // area para carregar coisas da ficha
+        if (p1.arma != "Cetro Elegante") {
+            p1.arma = "Adaga de Sacrifício"; // 1d4+1 de dano
+            p1.dadoDano = "1d4";
+            p1.modDanoFisico = 1;
+        }
+        p1.classe = "Mago";
+        p1.sabedoria = p1.sabedoria + 2;
+        p1.vidaMaxima = hp();
+        p1.vida = p1.vidaMaxima;
+        p1.mana = mana();
+        p1.mana = p1.manaMaxima;
+        p1.defesa = defesa();
     }
 
     public static void bardo() {
