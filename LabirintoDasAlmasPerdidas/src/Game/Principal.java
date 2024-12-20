@@ -97,25 +97,25 @@ public class Principal {
                                 break;
                             case 5:
                                 clear();
-                                while (resposta==5) {
-                                System.out.print("Digite o Código:");
-                                String codigo = scanner.nextLine();
-                                if (codigo == "joão, entre o céu e a terra, você sempre será o mais honrado.") {
-                                    secret = true;
-                                    System.out.println("Você adquiriu a classe 'Honrado'");
-                                    resposta = scanner.nextInt();
-                                    resposta = 2;
-                                }else{
-                                    clear();
-                                    System.out.println("Código errado, deseja tentar novamente?");
-                                    System.out.println("          1- sim | 2- não");
-                                    resposta = scanner.nextInt();
-                                    clear();
-                                    if (resposta==1) {
-                                        resposta = 5;
+                                while (resposta == 5) {
+                                    System.out.print("Digite o Código:");
+                                    String codigo = scanner.nextLine();
+                                    if (codigo == "joão, entre o céu e a terra, você sempre será o mais honrado.") {
+                                        secret = true;
+                                        System.out.println("Você adquiriu a classe 'Honrado'");
+                                        resposta = scanner.nextInt();
+                                        resposta = 2;
+                                    } else {
+                                        clear();
+                                        System.out.println("Código errado, deseja tentar novamente?");
+                                        System.out.println("          1- sim | 2- não");
+                                        resposta = scanner.nextInt();
+                                        clear();
+                                        if (resposta == 1) {
+                                            resposta = 5;
+                                        }
                                     }
                                 }
-                            }
                             default:
                                 resposta = 0;
                                 break;
@@ -164,7 +164,7 @@ public class Principal {
                     "{1- Força} {2- Destreza} {3- Constituição} {4- Sabedoria} {5- Inteligência} {6- Carisma}");
             resposta = scanner.nextInt();
             clear();
-            if (i > 2) {
+            if (i < 2) {
                 switch (resposta) {
                     case 1:
                         p1.forca = p1.forca++;
@@ -252,17 +252,22 @@ public class Principal {
         System.out.println("___________________________________________________________ ");
         System.out.println("|  1- Guerreiro  |  2- Mago  |  3- Bardo  |  4- Paladino  |");
         System.out.println("| (+1 For e Const)  (+2 Sab)     (+2 Car)   (+1 Sab e Car)|");
-        System.out.println("|         O(~)          Ô  o         <Õ         __^D  ~~Ô>| ");
-        System.out.println("|        /|\\|          /|\\/          /|\\        )_)()\\|   | ");
-        System.out.println("|        / \\           / \\           / \\           /\\     |");
+        System.out.println("|       O(~)          Ô  o         <Õ           __^D  ~~Ô>| ");
+        System.out.println("|      /|\\|          /|\\/          /|\\       ( )()\\|   | ");
+        System.out.println("|      / \\           / \\           / \\          /\\     |");
         System.out.println("|=========================================================|");
         System.out.println("|  5- Ladino  |  6- Clérigo  |  7- Druida  |  8- Bárbaro  | ");
         System.out.println("|     (+2 Dex)  (+1 Sab e Car) (+1 Agi e Int)   (+2 For)  |  ");
-        System.out.println("|        ã             ê c            ö *           õ <|) |   ");
-        System.out.println("|      ~/|\\->         /|\\|           /|\\|        (*)|\\ |  |   ");
-        System.out.println("|       / \\           / \\|           / \\|          / \\    |  ");
+        System.out.println("|     ã              ê c             ö *            õ <|} |   ");
+        System.out.println("|   ~/|\\->         /|\\|           /|\\|        (*)|\\ |  |   ");
+        System.out.println("|    / \\           / \\|           / \\|          / \\    |  ");
         System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-
+        if (secret == true) {
+            System.out.println("              |  9- O Mais Honrado  |");
+            System.out.println("                    (+2 Geral)        ");
+            System.out.println("                       o__/_        ");
+            System.out.println("                       / \\        ");
+        }
         System.out.print("Classe:");
         p1.classe = scanner.nextLine();
     }
@@ -678,7 +683,7 @@ public class Principal {
         boolean fugiu = false, habFuga = false, maiorDestreza = false;
         int dFuga = 0;
         for (int i = 0; i < p1.habilidade.length; i++) {
-            if (p1.habilidade[i] == "") {
+            if (p1.habilidade[i] == "Fuga Aprimorada") {
                 habFuga = true;
             }
         }
@@ -1288,6 +1293,273 @@ public class Principal {
     }
 
     public static void guerreiro() {
+        boolean escolha = false;
+        // aqui é a história inicial e escolha de itens do guerreiro
+        System.out.println("Você era um guarda de um reino distante, ou talvez alguém que apenas gostava de uma boa");
+        System.out
+                .println("luta, quem sabe. Esses anos de batalhas épicas nas suas costas trouxeram sua força à tona.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out
+                .println("Sua infância foi muito conturbada, sua mãe vivia andando pelas periferias buscando dinheiro");
+        System.out.println("para sustentar a família. Durante uma tarde em que você andava de volta para casa, a rua");
+        System.out.println("deserta pós festival. ");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("De frente a estátua da cidade, mostrando o nobre guerreiro, é possível observar ao lado a");
+        System.out.println(
+                "Máfia Xerothiana. Eles se voltam contra os guardas locais, mais um território a ser conquistado. ");
+        System.out.println(
+                "Seu senso de heroísmo entra na mente ao observar novamente aquela estátua oxidada, por outro lado");
+        System.out.println("seu rosto parece ficar perfeito no lugar...");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("Escolha o lado da luta");
+            System.out.println("");
+            System.out.println("{1- Ajudar a guarda}");
+            System.out.println("{2- Ajudar a máfia}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println(
+                            "Se enchendo de honra, numa investida retilínea por trás, pegando uma garrafa quebrada no caminho como arma.");
+                    System.out.println("Sua ajuda na batalha foi o trunfo dos guardas, o levando a vitória.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Adquiriu 'Honra Heróica'"); // habilidade ativa para buff de defesa e dano
+                    p1.habilidade[0] = "Honra Heróica";
+                    resposta = scanner.nextInt();
+                    clear();
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println(
+                            "Seu ego ultrapassa seu sentimento de honra, o fazendo procurar por uma faca e seguir até a briga.");
+                    System.out.println("Sua ajuda traz a máfia uma nova conquista.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Adquiriu 'Aura Egocêntrica'"); // habilidade passiva para debuff inimigo
+                    p1.habilidade[0] = "Aura Egocêntrica";
+                    resposta = scanner.nextInt();
+                    clear();
+                    break;
+                default:
+                clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        clear();
+        System.out.println("O tempo passou, suas lutas aumentaram gradativamente. Infelizmente durante suas explorações você foi");
+        System.out.println("surpreendido por vários ladinos, onde teve seus itens roubados e com um golpe fosse apagado repentinamente.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("Você está se preparando para mais um dia de luta. O cheiro da lavagem comida");
+        System.out.println("parece estar impregnado na sua cela. Os passos pesados chegam até a frente da porta");
+        System.out.println("sinalizando que a batalha vai iniciar.");
+        resposta = scanner.nextInt();
+        clear(); // mudança de armas muda apenas a narração inicial
+        do {
+            System.out.println("escolha uma arma");
+            System.out.println("");
+            System.out.println("{1- Espada Longa}");
+            System.out.println("{2- Duas machadinhas}");
+            System.out.println("{3- Machado}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    p1.arma = "Espada Longa";
+                    System.out.println("Você obteve Espada Longa");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out
+                            .println("Você pega uma espada longa bem suja e enferrujada que estava próxima da porta.");
+                    System.out.println(
+                            "O guarda te puxa para fora do quarto com uma enorme força e te joga a uma espécie");
+                    System.out.println("de coliseu. Os gritos aumentam cada vez mais que você vai para o centro.");
+                    p1.dadoDano = "1d8";
+                    p1.modDanoFisico = 3; // 1d8+3 de dano e pode usar agilidade
+                    resposta = scanner.nextInt();
+                    clear();
+                    break;
+                case 2:
+                    escolha = true;
+                    p1.arma = "Duas Machadinhas";
+                    System.out.println("Você obteve Duas machadinhas");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("O guarda se aproxima rapidamente e no reflexo você pega duas machadinhas que");
+                    System.out.println(
+                            "estavam encima da mesa. Elas parecem ser arremesáveis. O guarda te puxa na força");
+                    System.out.println("do ódio até uma espécie de ringue, parecendo uma prisão.");
+                    System.out.println("Os camponeses que apostaram em você gritam.");
+                    p1.dadoDano = "1d8";
+                    p1.modDanoFisico = 2; // 1d8+2 e pode atacar duas vezes ou arremessar
+                    resposta = scanner.nextInt();
+                    clear();
+                    break;
+                case 3:
+                    escolha = true;
+                    p1.arma = "Machado";
+                    System.out.println("Você obteve Machado");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você olha em volta desse quarto minúsculo e encontra uma caixa metálica com");
+                    System.out.println(
+                            "um machado de duas mãos dentro. O guarda chega até a porta e te chama até a arena");
+                    System.out.println(
+                            "e lá você acha vários reis e aristocratas nas arquibancadas. Eles te encaram com desgosto.");
+                    p1.dadoDano = "1d12";
+                    p1.modDanoFisico = 4;// é 1d12+4
+                    resposta = scanner.nextInt();
+                    clear();
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        System.out.println("Seu oponente sai do outro lado da arena e ambos começam uma batalha intensa.");
+        System.out.println("A derrota parece certa, sua visão aos poucos vai ficando mais turva e a dor");
+        System.out.println("apenas aumenta. Ao cair no chão tudo parece perdido e prestres a desmoronar.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println("Com você caído, o adversário levanta a arma preparando um golpe finalizador,");
+        System.out.println("mas parece ser possível fazer algo.");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("Faça sua ação");
+            System.out.println("");
+            System.out.println("{1- Jogar Sujo}");
+            System.out.println("{2- Ataque Surpresa}");
+            System.out.println("{3- Aceitar Derrota}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) { // Escolha da habilidade inicial de guerreiro
+                case 1:
+                    escolha = true;
+                    p1.habilidade[1] = "Cegueira Temporária";
+                    System.out.println("Você obteve 'Cegueira Temporária'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "O oponente ao levantar a arma e se preparar para descer com tudo, você atira areia em seus olhos");
+                    System.out.println(
+                            "o fazendo gritar e soltar a arma, aproveitando o momento para o derrubar e finalizar a batalha");
+                    System.out.println("ali mesmo.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "A plateia fica em silêncio por um tempo, mas começam a lhe aplaudir e gritar seu nome. Comemorando.");
+                    System.out.println(p1.nome + "!!! " + p1.nome + "!!! " + p1.nome + "!!!");
+                    break;
+                case 2:
+                    escolha = true;
+                    p1.habilidade[1] = "Ataque Surpresa";
+                    System.out.println("Você obteve 'Ataque Surpresa'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "O oponente se prepara para finalizar a batalha de uma vez, mas suas mãos tremem e soltam sua arma.");
+                    System.out.println(
+                            "Ele poupa sua vida, mas como um extinto de sobrevivência, você avança quando ele se vira");
+                    System.out.println("e o apunhala pelas costas.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("A plateia grita e comemora sua vitória.");
+                    System.out.println(p1.nome + "!!! " + p1.nome + "!!! " + p1.nome + "!!!");
+                    break;
+                case 3:
+                    escolha = true;
+                    p1.habilidade[1] = "Fuga Aprimorada";
+                    System.out.println("Você obteve 'Fuga Aprimorada'");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println(
+                            "O oponente se prepara para acabar com sua vida fútil. Ele levanta a sua arma o máximo possível");
+                    System.out.println(
+                            "e você apenas aceita sua morte. Até que ele te encara e solta a arma no chão, e vai embora.");
+                    System.out.println("A plateia vaia todos na arena, jogando tomates, latas e vários xingamentos.");
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Você é puxado até a sala do imperador, onde ele te encara dos pés a cabeça, parecendo que está analisando");
+        System.out.println(
+                "uma mercadoria. Ele afirma que viu potencial em você, e o obriga a adentrar as masmorras das almas em");
+        System.out.println("busca da coroa do Rei Peregrino.");
+        resposta = scanner.nextInt(); // aqui é a escolha dos itens iniciais
+        clear();
+        do {
+            System.out.println("escolha o que deseja levar");
+            System.out.println("");
+            System.out.println("{1- Medicamentos}");
+            System.out.println("{2- Treinamento Físico}");
+            System.out.println("{3- Equipamentos}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println("Você obteve 2 Poções de cura e 1 Bandagem");
+                    p1.item[1] = "2x Poção de Cura";
+                    p1.item[2] = "1x Bandagem";
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println("Você recebeu +1 em Constituição");
+                    p1.constituicao = p1.constituicao++;
+                    break;
+                case 3:
+                    escolha = true;
+                    System.out.println("Você obteve 1 Escudo e 1 Armadura de couro");
+                    p1.defesa = 2;
+                    p1.escudo = 1;
+                    p1.rd = 3;
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Você pega alguns equipamentos que o imperador disponibilizou. Contra sua vontade uma escolta o leva");
+        System.out.println("até a frente da masmorra, te encarando até realmente adentra-lá.");
+        resposta = scanner.nextInt();
+        clear();
+        // area para carregar coisas da ficha
+        p1.classe = "Guerreiro";
+        p1.forca = p1.forca + 1;
+        p1.constituicao = p1.constituicao + 1;
+        hp();
+        p1.vida = p1.vidaMaxima;
+        mana();
+        p1.mana = p1.manaMaxima;
+        defesa();
+        p1.rd = p1.rd + 3;
+        if (p1.arma == "Duas Machadinhas") {
+            p1.habilidade[2] = "Ataque Duplo";
+            p1.habilidade[3] = "Arremessar";
+        }
+
     }
 
     public static void mago() {
