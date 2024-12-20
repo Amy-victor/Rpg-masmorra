@@ -1059,7 +1059,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem caso o braço esquerdo esteja com vida 0
+                                } else {// mensagem case o braço esquerdo esteja com vida 0
                                     System.out.println("Você observa que seu braço já está no chão, que desgraça.");
                                 }
                                 break;
@@ -1096,7 +1096,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem caso o braço direito esteja com vida 0
+                                } else {// mensagem case o braço direito esteja com vida 0
                                     System.out.println(
                                             "Você observa que seu braço caiu, juntamente de sua arma. Pelo menos estamos na vantagem, né?");
                                 }
@@ -1134,7 +1134,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem caso a perna esquerda esteja com vida 0
+                                } else {// mensagem case a perna esquerda esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
@@ -1172,7 +1172,7 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem caso a perna direita esteja com vida 0
+                                } else {// mensagem case a perna direita esteja com vida 0
                                     System.out.println(
                                             "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
                                 }
@@ -1242,7 +1242,7 @@ public class Principal {
         System.out.println("{Sair}");
         resposta = scanner.nextLine();
         clear();
-        if (combate == true) {// caso esteja no combate
+        if (combate == true) {// case esteja no combate
             switch ("") {
                 case "":
 
@@ -1253,7 +1253,7 @@ public class Principal {
                     break;
             }
         } else {
-            switch (resposta) {// caso esteja fora do combate
+            switch (resposta) {// case esteja fora do combate
                 case "":
 
                     break;
@@ -1292,9 +1292,9 @@ public class Principal {
         return uso;
     }
 
+    // classe guerreiro
     public static void guerreiro() {
         boolean escolha = false;
-        // aqui é a história inicial e escolha de itens do guerreiro
         System.out.println("Você era um guarda de um reino distante, ou talvez alguém que apenas gostava de uma boa");
         System.out
                 .println("luta, quem sabe. Esses anos de batalhas épicas nas suas costas trouxeram sua força à tona.");
@@ -1886,7 +1886,120 @@ public class Principal {
         p1.defesa = defesa();
     }
 
+    // classe bardo
     public static void bardo() {
+        boolean escolha = false;
+        System.out.println(
+                "Sua vida gira em torno dos instrumentos. Em alguma fase da sua vida você percebeu que suas prosas");
+        System.out.println("e canções poderiam conjurar magias, mas provém da sua índole de como ela será usada.");
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Você está se preparando para mais um dia de trabalho na taverna. Seu quarto está uma bagunça, e");
+        System.out.println(
+                "as fãs com quem passou a noite parecem já ter saído do quarto. Após pegar sua bolsa você pensa");
+        System.out.println("em qual instrumento irá utilizar.");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("Escolha seu instrumento");
+            System.out.println("");
+            System.out.println("{1- Alaúde}");
+            System.out.println("{2- Trombeta}");
+            System.out.println("{3- Flauta}");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println("Você obteve Alaúde");
+                    p1.acessorio[0] = "Alaúde";
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println("Você obteve Trombeta");
+                    p1.acessorio[0] = "Trombeta";
+                    break;
+                case 3:
+                    escolha = true;
+                    System.out.println("Você obteve Flauta");
+                    p1.acessorio[0] = "Flauta";
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        System.out.println(
+                "Após pegar tudo que precisa, Você pega viagem com uma carroça até a taverna. Durante algumas paradas");
+        System.out.println(
+                "uma multidão de pessoas o reconheceu e barraram o caminho da carroça, tentando conversar com você.");
+        System.out.println("Eles tentam conversar, alguns gritam seu nome pedindo uma assinatura.");
+        System.out.println(p1.nome + " Assine minha prosa!!!!");
+        resposta = scanner.nextInt();
+        clear();
+        do {
+            System.out.println("escolha sua ação");
+            System.out.println("");
+            System.out.println("{1- Ignorar}");
+            System.out.println("{2- Ser gentil");
+            System.out.println("{3- Ameaçar");
+            resposta = scanner.nextInt();
+            clear();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+                    System.out.println(
+                            "Você ignora totalmente a existência deles, para você não passa de míseros camponeses querendo destruir");
+                    System.out.println(
+                            "seu dia. Ao perceberem sua ignorância eles tiram a atenção de você e abrem passagem.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você obteve 'Atenção Prejudicada'");
+                    p1.magia[0] = "Atenção Prejudicada";
+                    break;
+                case 2:
+                    escolha = true;
+                    System.out.println(
+                            "Você põe um falso sorriso no rosto, fingindo adorar aquele povo. Alguns você aceita as cartas como");
+                    System.out.println(
+                            "presente, assina algumas prosas, aperta mãos. Depois de todos estarem satisfeitos você percebe que o ");
+                    System.out.println(
+                            "tempo passou rápido. Quando senta na carroça você fala com raiva para ele acelerar.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você obteve 'Charme Roteirizado'");
+                    p1.habilidade[0] = "Charme Roteirizado";
+                    break;
+                case 3:
+                    escolha = true;
+                    System.out.println(
+                            "Você olha para a multidão com desdém, gritando para se afastarem case ainda quisessem ouvir novamente.");
+                    System.out.println("Todos assustados correm para longe da carroça, abrindo novamente a passagem.");
+                    resposta = scanner.nextInt();
+                    clear();
+                    System.out.println("Você obteve 'Zombaria Viciosa'");
+                    p1.magia[0] = "Zombaria Viciosa";
+                    break;
+                default:
+                    clear();
+                    System.out.println("Escolha invalida.");
+                    break;
+            }
+        } while (escolha == false);
+        escolha = false;
+        resposta = scanner.nextInt();
+        clear();
+        // esse se vai servir pra case tenha anoitecido
+        if (p1.habilidade[0] == "Charme Roteirizado") {
+
+        } else {// aqui case esteja ainda dia
+
+        }
     }
 
     public static void paladino() {
