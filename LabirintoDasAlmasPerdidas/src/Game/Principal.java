@@ -715,6 +715,7 @@ public class Principal {
         boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false;
         int guarde = 0;
         while (combate == true) { // vai repetir até matar o monstro ou fugir
+           do{
             if (p1.vida > 0 && monstro[ameaca].vida > 0) { // se o player tiver mais de 0 de vida continua o combate
                 // Sprites em ASCII
                 if (monstro[ameaca].cabeca > 0 && monstro[ameaca].bracoEsquerdo > 0 && monstro[ameaca].bracoDireito > 0
@@ -931,7 +932,9 @@ public class Principal {
                 switch (resposta) {
                     // Menu de atacar
                     case 1:
-                        System.out.println("-------------------------------------------------------------------");
+                    do{    
+                        boolean sair = false;
+                    System.out.println("-------------------------------------------------------------------");
                         System.out.println("|                    " + monstro[ameaca].nome + "                     |");
                         System.out.println("| [1- Torso]                                                      |");
                         if (monstro[ameaca].cabeca > 0) {
@@ -949,6 +952,7 @@ public class Principal {
                         if (monstro[ameaca].pernaDireita > 0) {
                             System.out.println("| [6- Perna Direita]                                          |");
                         }
+                        System.out.println("| [7- Voltar]                                                       |");
                         System.out.println("-------------------------------------------------------------------");
                         System.out.println("  " + p1.nome);
                         System.out.println(
@@ -960,6 +964,7 @@ public class Principal {
                             case 1: // atacar torso
                                 acertoP = testeAtaqueP();
                                 if (acertoP == true) {
+                                    acao = true;
                                     guarde = danoP();
                                     monstro[ameaca].torso = monstro[ameaca].torso - guarde;
                                 } else {
@@ -990,6 +995,7 @@ public class Principal {
                                 break;
                             case 2: // atacar cabeça
                                 if (monstro[ameaca].cabeca > 0) {
+                                    acao = true;
                                     acertoP = acertarCabeca();
                                     if (acertoP == true) {
                                         guarde = danoP();
@@ -1021,13 +1027,14 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem se a cabeça estiver com vida 0
+                                } else {// caso já tenha sido destruído
                                     System.out.println(
-                                            "Você observa que sua cabeça caiu faz algum tempo... Como será que ele ainda luta?");
+                                            "Essa parte já foi destruída");
                                 }
                                 break;
                             case 3:// atacar braço esquerdo
                                 if (monstro[ameaca].bracoEsquerdo > 0) {
+                                    acao = true;
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
@@ -1059,12 +1066,14 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem case o braço esquerdo esteja com vida 0
-                                    System.out.println("Você observa que seu braço já está no chão, que desgraça.");
+                                } else {// caso já tenha sido destruído
+                                    clear();
+                                    System.out.println("Essa parte já foi destruída");
                                 }
                                 break;
                             case 4: // atacar braço direito
                                 if (monstro[ameaca].bracoDireito > 0) {
+                                    acao = true;
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
@@ -1096,13 +1105,15 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem case o braço direito esteja com vida 0
+                                } else {// caso escolha e já tenha sido destruído
+                                    clear();
                                     System.out.println(
-                                            "Você observa que seu braço caiu, juntamente de sua arma. Pelo menos estamos na vantagem, né?");
+                                            "Essa parte já foi destruída");
                                 }
                                 break;
                             case 5: // atacar perna esquerda
                                 if (monstro[ameaca].pernaEsquerda > 0) {
+                                    acao = true;
                                     acertoP = testeAtaqueP();
                                     if (acertoP == true) {
                                         guarde = danoP();
@@ -1172,17 +1183,23 @@ public class Principal {
                                                 break;
                                         }
                                     }
-                                } else {// mensagem case a perna direita esteja com vida 0
+                                } else {//caso já tenha destruído a parte do corpo
+                                    clear();
                                     System.out.println(
-                                            "Você observa que sua perna está desgastada, me pergunto como ainda se mantém de pé.");
+                                            "Essa parte já foi destruída");
                                 }
                                 break;
+                                case 7:
+                                sair = true;
+                                break;
                             default:
-                                System.out.println("Suas tentativas acabam sendo em vão... Você erra.");
+                                clear();
+                                System.out.println("escolha outra opção");
                                 break;
                         }
-                        break;
-                    case 2:// usar habilidades
+                    }while(sair != true);
+                        break;   
+                 case 2:// usar habilidades
                         acao = habilidades();
                         clear();
                         break;
@@ -1190,8 +1207,9 @@ public class Principal {
                         acao = true;
                         System.out.println();
                         System.out.println("| Seus olhos passam rapidamente pelo inimigo ");
-                        System.out.println();
-
+                        System.out.println("HP: "+monstro[ameaca].vida+" Defesa: "+monstro[ameaca].defesa);
+                        resposta = scanner.nextInt();
+                        clear();
                     case 4:// usar itens
                         acao = itens();
                         clear();
@@ -1201,11 +1219,13 @@ public class Principal {
                         clear();
                         break;
                     default:
-                        System.out.println("Você tenta agir, mas falha miseravelmente.");
-                        acao = true;
-                        clear();
-                        break;
-                }// ataque do monstro no final do turno
+                    clear();
+                        System.out.println("Escolha outra opção")
+                                                break;
+                }
+            }while(acao != true);
+            acao = false;
+                // ataque do monstro no final do turno
                 if (acao == true && fuga == false) {
                     acertoM = testeAtaqueM();
                 } else if (fuga == true) {
@@ -1351,7 +1371,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         clear();
         System.out.println(
                 "O tempo passou, suas lutas aumentaram gradativamente. Infelizmente durante suas explorações você foi");
@@ -1426,7 +1446,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         System.out.println("Seu oponente sai do outro lado da arena e ambos começam uma batalha intensa.");
         System.out.println("A derrota parece certa, sua visão aos poucos vai ficando mais turva e a dor");
@@ -1496,7 +1516,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
@@ -1539,7 +1559,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         resposta = scanner.nextInt();
         clear();
         System.out.println(
@@ -1636,7 +1656,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
@@ -1728,7 +1748,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
@@ -1810,7 +1830,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == true);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
@@ -1860,7 +1880,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         resposta = scanner.nextInt();
         clear();
         System.out
@@ -1930,7 +1950,7 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
@@ -1990,13 +2010,17 @@ public class Principal {
                     System.out.println("Escolha invalida.");
                     break;
             }
-        } while (escolha == false);
+        } while (escolha != true);
         escolha = false;
         resposta = scanner.nextInt();
         clear();
         // esse se vai servir pra case tenha anoitecido
         if (p1.habilidade[0] == "Charme Roteirizado") {
-
+            System.out.println("Por mais rápido que a carroça fosse, ainda havia bastante terra a seguir. Ao chegar na taverna, o taverneiro já");
+            System.out.println("estava estressado com a demora. Como normalmente você é acompanhado até seu camarin, que diferentemente de como é");
+            System.out.println("durante a manhã. Ele está totalmente revirado e deplorável. Independente, o show deve continuar.");
+            resposta = scanner.nextLine();
+            clear(); 
         } else {// aqui case esteja ainda dia
 
         }
@@ -2082,6 +2106,11 @@ public class Principal {
             default:
                 break;
         }
+        p1.cabeca = guarde / 10;
+        p1.bracoEsquerdo = guarde / 5;
+        p1.bracoDireito = guarde / 5;
+        p1.pernaEsquerda = guarde / 4;
+        p1.pernaDireita = guarde / 4;
         return guarde;
     }
 
