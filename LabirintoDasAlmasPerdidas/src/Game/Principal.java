@@ -712,7 +712,7 @@ public class Principal {
 
     // método de batalha
     public static boolean batalha() {
-        boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false;
+        boolean vitoria = false, acertoM = false, acertoP = false, fuga = false, acao = false, voltar = false;
         int guarde = 0;
         while (combate == true) { // vai repetir até matar o monstro ou fugir
            do{
@@ -932,9 +932,8 @@ public class Principal {
                 switch (resposta) {
                     // Menu de atacar
                     case 1:
-                    do{    
-                        boolean sair = false;
-                    System.out.println("-------------------------------------------------------------------");
+                    do{
+                        System.out.println("-------------------------------------------------------------------");
                         System.out.println("|                    " + monstro[ameaca].nome + "                     |");
                         System.out.println("| [1- Torso]                                                      |");
                         if (monstro[ameaca].cabeca > 0) {
@@ -1190,14 +1189,14 @@ public class Principal {
                                 }
                                 break;
                                 case 7:
-                                sair = true;
+                                voltar = true;
                                 break;
                             default:
                                 clear();
                                 System.out.println("escolha outra opção");
                                 break;
                         }
-                    }while(sair != true);
+                    }while(voltar != true);
                         break;   
                  case 2:// usar habilidades
                         acao = habilidades();
@@ -1220,10 +1219,11 @@ public class Principal {
                         break;
                     default:
                     clear();
-                        System.out.println("Escolha outra opção")
+                        System.out.println("Escolha outra opção");
                                                 break;
                 }
-            }while(acao != true);
+            }
+        }while(acao != true);
             acao = false;
                 // ataque do monstro no final do turno
                 if (acao == true && fuga == false) {
@@ -1234,15 +1234,14 @@ public class Principal {
                 if (acertoM == true) {
                     guarde = danoM();
                     p1.vida = p1.vida - guarde;
-                }
-            } else if (fuga == true || monstro[ameaca].vida <= 0) { // se conseguir fugir ou o monstro tiver 0 de vida
+                } else if (fuga == true || monstro[ameaca].vida <= 0) { // se conseguir fugir ou o monstro tiver 0 de vida
                 combate = false;
                 vitoria = true;
             } else { // se o player tiver 0 de vida
                 combate = false;
                 vitoria = false;
-            }
         }
+    }
         clear();
         return vitoria;
     }// fim do método de batalha
@@ -2016,11 +2015,16 @@ public class Principal {
         clear();
         // esse se vai servir pra case tenha anoitecido
         if (p1.habilidade[0] == "Charme Roteirizado") {
-            System.out.println("Por mais rápido que a carroça fosse, ainda havia bastante terra a seguir. Ao chegar na taverna, o taverneiro já");
-            System.out.println("estava estressado com a demora. Como normalmente você é acompanhado até seu camarin, que diferentemente de como é");
-            System.out.println("durante a manhã. Ele está totalmente revirado e deplorável. Independente, o show deve continuar.");
-            resposta = scanner.nextLine();
-            clear(); 
+            System.out.println(
+                    "Por mais rápido que a carroça fosse, ainda havia bastante terra a seguir. Ao chegar na taverna, o taverneiro já");
+            System.out.println(
+                    "estava estressado com a demora. Como normalmente você é acompanhado até seu camarin, que diferentemente de como é");
+            System.out.println(
+                    "durante a manhã. Ele está totalmente revirado e deplorável. Independente, o show deve continuar.");
+            resposta = scanner.nextInt();
+            clear();
+            
+
         } else {// aqui case esteja ainda dia
 
         }
