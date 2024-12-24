@@ -2023,10 +2023,12 @@ public class Principal {
                     "durante a manhã. Ele está totalmente revirado e deplorável. Independente, o show deve continuar.");
             resposta = scanner.nextInt();
             clear();
-            
-
+            System.out.println("Como será sua performance?");
+            System.out.println("");
+            System.out.println("{1- Melodia Encantadora}");
+            System.out.println("{2- Atuação }");
         } else {// aqui case esteja ainda dia
-
+ 
         }
     }
 
