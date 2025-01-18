@@ -1965,8 +1965,8 @@ public class Principal {
             System.out.println("escolha sua ação");
             System.out.println("");
             System.out.println("{1- Ignorar}");
-            System.out.println("{2- Ser gentil");
-            System.out.println("{3- Ameaçar");
+            System.out.println("{2- Ser gentil}");
+            System.out.println("{3- Ameaçar}");
             resposta = scanner.nextInt();
             clear();
             switch (resposta) {
