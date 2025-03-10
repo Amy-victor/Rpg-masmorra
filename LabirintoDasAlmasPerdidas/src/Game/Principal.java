@@ -1908,6 +1908,7 @@ public class Principal {
     // classe bardo
     public static void bardo() {
         boolean escolha = false;
+        boolean turno = false;
         System.out.println(
                 "Sua vida gira em torno dos instrumentos. Em alguma fase da sua vida você percebeu que suas prosas");
         System.out.println("e canções poderiam conjurar magias, mas provém da sua índole de como ela será usada.");
@@ -1966,7 +1967,6 @@ public class Principal {
             System.out.println("");
             System.out.println("{1- Ignorar}");
             System.out.println("{2- Ser gentil}");
-            System.out.println("{3- Ameaçar}");
             resposta = scanner.nextInt();
             clear();
             switch (resposta) {
@@ -1978,31 +1978,19 @@ public class Principal {
                             "seu dia. Ao perceberem sua ignorância eles tiram a atenção de você e abrem passagem.");
                     resposta = scanner.nextInt();
                     clear();
-                    System.out.println("Você obteve 'Atenção Prejudicada'");
-                    p1.magia[0] = "Atenção Prejudicada";
                     break;
                 case 2:
                     escolha = true;
+                    turno = true;
                     System.out.println(
                             "Você põe um falso sorriso no rosto, fingindo adorar aquele povo. Alguns você aceita as cartas como");
                     System.out.println(
                             "presente, assina algumas prosas, aperta mãos. Depois de todos estarem satisfeitos você percebe que o ");
                     System.out.println(
-                            "tempo passou rápido. Quando senta na carroça você fala com raiva para ele acelerar.");
+                            "tempo passou rápido. Quando senta na carroça você fala com raiva para ele acelerar.");        
                     resposta = scanner.nextInt();
                     clear();
                     System.out.println("Você obteve 'Charme Roteirizado'");
-                    p1.habilidade[0] = "Charme Roteirizado";
-                    break;
-                case 3:
-                    escolha = true;
-                    System.out.println(
-                            "Você olha para a multidão com desdém, gritando para se afastarem case ainda quisessem ouvir novamente.");
-                    System.out.println("Todos assustados correm para longe da carroça, abrindo novamente a passagem.");
-                    resposta = scanner.nextInt();
-                    clear();
-                    System.out.println("Você obteve 'Zombaria Viciosa'");
-                    p1.magia[0] = "Zombaria Viciosa";
                     break;
                 default:
                     clear();
@@ -2014,7 +2002,7 @@ public class Principal {
         resposta = scanner.nextInt();
         clear();
         // esse se vai servir pra case tenha anoitecido
-        if (p1.habilidade[0] == "Charme Roteirizado") {
+        if (turno == true) {
             System.out.println(
                     "Por mais rápido que a carroça fosse, ainda havia bastante terra a seguir. Ao chegar na taverna, o taverneiro já");
             System.out.println(
@@ -2023,10 +2011,32 @@ public class Principal {
                     "durante a manhã. Ele está totalmente revirado e deplorável. Independente, o show deve continuar.");
             resposta = scanner.nextInt();
             clear();
+            do{
             System.out.println("Como será sua performance?");
             System.out.println("");
             System.out.println("{1- Melodia Encantadora}");
             System.out.println("{2- Atuação }");
+            System.out.println("{3- Orquestra Instrumental}");
+            resposta = scanner.nextInt();
+            switch (resposta) {
+                case 1:
+                    escolha = true;
+
+                    break;
+                case 2:
+                    escolha = true;
+
+                    break;
+                case 3:
+                    escolha = true;
+
+                    break;
+                default:
+                    clear();
+                    System.out.println("não há essa opção, escolha uma correta");
+                    break;
+            }
+        } while(escolha != true);   
         } else {// aqui case esteja ainda dia
  
         }
